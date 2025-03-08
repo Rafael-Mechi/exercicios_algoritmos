@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times Paulista</title>
+</head>
+<body>
+    <label for="ipt_time">Insira seu time paulista</label>
+    <input type="text" id="ipt_time">
+
+    <button onclick="sobreTime()">Fale sobre esse time</button>
+
+    <div id="fundo" style="width: 100px; height: 100px;"></div>
+    <h3 id="mensagem"></h3>
+
+    <script>
+        function sobreTime() {
+            var time = ipt_time.value; // Acessa o valor do input diretamente pelo ID
+
+            if (time === "Corinthians") {
+                fundo.style.backgroundColor = "black"; // Acessa o elemento diretamente pelo ID
+                mensagem.style.color = "white"; // Acessa o elemento diretamente pelo ID
+                mensagem.innerHTML = "Salve o Corinthians";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=[device-width], initial-scale=1.0">
+    <title>Altura</title>
+</head>
+<body>
+    <label for="ipt_altura">Insira sua altura: </label>
+    <input type="number" id="ipt_altura" placeholder="Ex: 1.70">
+
+    <button onclick="calcularAltura()">Analisar Estatura</button>
+</body>
+    <script>
+        function calcularAltura(){
+            var altura = Number(ipt_altura.value);
+
+            if(altura <= 1.65){
+                alert('Você pode ser piloto de corrida');
+            }
+
+            else if(altura > 1.65){
+                if(altura <= 1.80){
+                    alert('Você pode ser jogador de futebol');
+                }
+                else {
+                alert('Você pode ser jogador de vôlei ou basquete');
+            }
+            }
+            
+        }
+    </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classe social</title>
+</head>
+<body>
+    <label for="ipt_renda">Insira a renda da família</label>
+    <input type="number" id="ipt_renda">
+
+    <button onclick="calcularClasse()">Analisar Renda</button>
+</body>
+    <script>
+        // var a = Number(4.5);
+        // var b = parseFloat(45.5);
+        // parseFloat(45px): retorna 45
+        // parseFloat(px45): NaN
+
+        function calcularClasse(){
+            var renda = Number(ipt_renda.value);
+
+            if(renda <= 250){
+                alert('Classe E');
+            }
+            else if(renda <= 900){
+                if(renda > 250){
+                    alert('Classe D');
+                }
+            }
+            else if(renda <= 2500){
+                if(renda > 900){
+                    alert('Classe C');
+                }
+            }
+            else if(renda <= 9000){
+                if(renda > 2500){
+                    alert('Classe B');
+                }
+            }
+            else{
+                alert('Classe A');
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensação Térmica</title>
+</head>
+<body>
+    <label for="ipt_temperatura">Insira a temperatura</label>
+    <input type="number" id="ipt_temperatura">
+
+    <button onclick="calcularTemperatura()">Analisar sensação térmica</button>
+</body>
+    <script>
+        function calcularTemperatura(){
+            var temperatura = Number(ipt_temperatura.value);
+
+            if(temperatura <= 14){
+                alert('Congelante');
+            }
+            else if(temperatura <= 21){
+                if(temperatura > 14){
+                    alert('Com Frio');
+                }
+            }
+            else if(temperatura <= 24){
+                if(temperatura > 21){
+                    alert('Confortável');
+                }
+            }
+            else if(temperatura <= 31){
+                if(temperatura > 24){
+                    alert('Com Calor');
+                }
+            }
+            else{
+                alert('Calor escaldante');
+            }
+        }
+    </script>
+</html>
