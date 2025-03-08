@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="contar()">Contar</button>
+    <button onclick="contar10()">Contar 10</button>
+
+    <h3 id="h3_resultado"></h3>
+
+</body>
+<script>
+
+    var n = 0;
+
+    function contar(){
+        n += 1;
+        h3_resultado.innerHTML = `Valor atual: ${n}`;
+    }
+
+    function contar10(){
+        n += 10;
+        h3_resultado.innerHTML = `Valor atual: ${n}`;
+    }
+
+</script>
+</html>

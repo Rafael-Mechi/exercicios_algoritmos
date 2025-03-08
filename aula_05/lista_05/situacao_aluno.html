@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação aluno</title>
+</head>
+<body>
+    <label for="ipt_n1">Insira a primeira nota</label>
+    <input type="number" id="ipt_n1">
+
+    <label for="ipt_n2">Insira a segunda nota</label>
+    <input type="number" id="ipt_n2">
+
+    <button onclick="calcularSituacao()">Verificar situação</button>
+</body>
+    <script>
+        function calcularSituacao(){
+            var n1 = Number(ipt_n1.value);
+            var n2 = Number(ipt_n2.value);
+            var calc = (n1 + n2) /2;
+
+            if(calc >= 6){
+                alert('Parabéns, aprovado!');
+            }
+            else{
+                alert('Tente outra vez...');
+            }
+        }
+    </script>
+</html>

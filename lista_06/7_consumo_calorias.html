@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de calorias</title>
+</head>
+<body>
+    <label for="ipt_paes">Quantos pães você têm comido por dia?</label>
+    <input type="number" id="ipt_paes">
+
+    <label for="ipt_bolachas">Quantas bolachas recheadas você têm comido por dia?</label>
+    <input type="number" id="ipt_bolachas">
+
+    <label for="ipt_achocolatados">Quantos achocolatados você têm tomado?</label>
+    <input type="number" id="ipt_achocolatados">
+
+    <button onclick="verificarCalorias()">Verificar calorias</button>
+
+</body>
+
+
+    <script>
+        function verificarCalorias(){
+            var paes = Number(ipt_paes.value);
+            var bolachas = Number(ipt_bolachas.value);
+            var achocolatados = Number(ipt_achocolatados.value);
+
+            var calorias = (paes * 50) + (bolachas * 80) + (achocolatados * 70);
+
+            if(calorias < 200){
+                alert("Parabéns, vai ficar em forma!");
+        }
+            else if(calorias < 400){
+                if(calorias >= 200){
+                    alert("Cuidado, vai ficar menos saudável !");
+                }
+            }
+
+            else{
+                alert("Alerta crítico de saúde !!!");
+            }
+        }
+    </script>
+</html>

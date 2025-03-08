@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco XPTO</title>
+</head>
+<body>
+    <label for="ipt_saldo">Insira o saldo</label>
+    <input type="number" id="ipt_saldo">
+
+    <label for="ipt_valor">Insira o valor do débito</label>
+    <input type="number" id="ipt_valor">
+
+    <button onclick="analisarConta()">Analisar conta</button>
+
+    <h3 id="h3_analiseNegativa" style="color: red;"></h3>
+    <h3 id="h3_analisePositiva" style="color: blue;"></h3>
+</body>
+    <script>
+        function analisarConta(){
+            var saldo = Number(ipt_saldo.value);
+            var valor = Number(ipt_valor.value);
+
+            var debito = saldo - valor;
+
+            if(debito < 0){
+                h3_analiseNegativa.innerHTML = `<b>O saldo atual da conta corrente é ${saldo}</b>`;
+            }
+
+            else{
+                h3_analisePositiva.innerHTML = `<i><i>O saldo atual da conta corrente é ${saldo}</i></i>`;
+            }
+        }
+    </script>
+</html>

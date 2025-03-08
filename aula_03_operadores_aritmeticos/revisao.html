@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="background-color: aquamarine;">
+        <button onclick="mostrarFraseGritando()">Click here</button>    
+        <button onclick="mostrarFrase()">Click here</button>
+        <input type="number" id="ipt_num">
+    </div>
+
+</body>
+
+
+    <script>
+        function mostrarFrase(){
+            console.log("Passei aqui antes do alerta");
+            alert("Seu número da sorte é: " + ipt_num.value);
+            console.log("Passei aqui dps do log");
+        }
+
+        function mostrarFraseGritando(){
+            alert("SEU NÚMERO DA SORTE AGORA É: " + ipt_num.value);
+        }
+    </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo Gasto</title>
+</head>
+<body>
+    <label for="ipt_sitcom">Insira o último sitcom que você assistiu</label>
+    <input type="text" id="ipt_sitcom">
+
+    <label for="ipt_episodio">Insira o total de episódios que você assistiu</label>
+    <input type="number" id="ipt_episodio">
+
+    <button onclick="calcularTempo()">Verificar nível</button>
+
+    <h3 id="h3_sitcom"></h3>
+    <h3 id="h3_tempo"></h3>
+</body>
+    <script>
+        function calcularTempo(){
+            var tempoAcima = ipt_episodio.value * 22;
+            h3_sitcom.innerHTML = `Vejo que você gosta da série ${ipt_sitcom.value}`;
+
+            if(tempoAcima > ipt_episodio.value){
+                h3_tempo.innerHTML = `Uau, você realmente gosta dessa série!`;
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peso elevador</title>
+</head>
+<body>
+    <label for="ipt_pesoElevador">Insira o peso do elevador</label>
+    <input type="number" id="ipt_pesoElevador">
+
+    <button onclick="calcularElevador()">Ligar elevador</button>
+
+    <h3 id="h3_elevador"></h3>
+</body>
+    <script>
+        function calcularElevador(){
+            if(ipt_pesoElevador.value < 500){
+                alert('Elevador vai se mover');
+            }
+            else{
+                alert('Alguém precisa descer do elevador');
+            }
+        }
+    </script>
+</html>

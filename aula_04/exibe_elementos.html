@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_nome"></label>
+    <input type="text" id="ipt_nome">
+
+    <button onclick="exibirApresentacao()">Apresentação</button>
+
+    <div id="div_apresentacao"></div>
+
+</body>
+
+<script>
+    function exibirApresentacao(){
+        var nome = ipt_nome.value;
+
+        div_apresentacao.innerHTML = 
+        `
+        <h1>Bem-vindo, ${nome}!</h1>
+        <h3>Esse é um site bem legal</h3>
+        <p>Aceito feedbacks</p>
+        `        
+        
+    }
+</script>
+
+</html>

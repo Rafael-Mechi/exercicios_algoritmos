@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <label for="ipt_nTabuada">Insira o número para a tabuada:</label>
+    <input type="number" id="ipt_nTabuada" placeholder="Ex: 6">
+
+    <button onclick="calcularTabuada()">Ver Tabuada</button>
+
+    <h3 id="resultado_tabuada"></h3>
+</body>
+
+    <script>
+        function calcularTabuada() {
+    resultado_tabuada.innerHTML = 
+        `${ipt_nTabuada.value} x 1 = ${ipt_nTabuada.value * 1} <br>` +
+        `${ipt_nTabuada.value} x 2 = ${ipt_nTabuada.value * 2} <br>` +
+        `${ipt_nTabuada.value} x 3 = ${ipt_nTabuada.value * 3} <br>` +
+        `${ipt_nTabuada.value} x 4 = ${ipt_nTabuada.value * 4} <br>` +
+        `${ipt_nTabuada.value} x 5 = ${ipt_nTabuada.value * 5} <br>` +
+        `${ipt_nTabuada.value} x 6 = ${ipt_nTabuada.value * 6} <br>` +
+        `${ipt_nTabuada.value} x 7 = ${ipt_nTabuada.value * 7} <br>` +
+        `${ipt_nTabuada.value} x 8 = ${ipt_nTabuada.value * 8} <br>` +
+        `${ipt_nTabuada.value} x 9 = ${ipt_nTabuada.value * 9}`;
+}
+
+    </script>
+</html>

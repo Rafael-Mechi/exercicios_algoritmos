@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+
+<body>
+
+    <div>
+        <label for="ipt_n1">Digite o primeiro número: </label>
+        <input type="number" id="ipt_n1">
+
+        <label for="ipt_n2">Digite o segundo número: </label>
+        <input type="number" id="ipt_n2">
+    </div>
+
+    <div>
+        <button onclick="soma()">Somar</button>
+        <button onclick="subtrai()">Subrair</button>
+        <button onclick="multiplica()">Multiplicar</button>
+        <button onclick="divide()">Dividir</button>
+    </div>
+</body>
+
+<script>
+    function soma() {
+    alert(`A soma entre ${ipt_n1.value} e ${ipt_n2.value} é ${(Number(ipt_n1.value) + Number(ipt_n2.value))}`);
+}
+
+
+    function subtrai() {
+        alert(`A diferença entre ${ipt_n1.value} e ${ipt_n2.value} é ${(ipt_n1.value - ipt_n2.value)}`);
+    }
+
+    function multiplica() {
+        alert(`O produto entre ${ipt_n1.value} e ${ipt_n2.value} é ${(ipt_n1.value * ipt_n2.value)}`);
+    }
+
+    function divide() {
+        alert(`A razão entre ${ipt_n1.value} e ${ipt_n2.value} é ${(ipt_n1.value / ipt_n2.value)}`);
+    }
+
+</script>
+
+</html>

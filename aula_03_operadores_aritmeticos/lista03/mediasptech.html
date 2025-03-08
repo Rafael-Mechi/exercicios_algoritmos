@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média</title>
+</head>
+<body>
+    <label for="ipt_notaContinuada">Insira a nota da Continuada: </label>
+    <input type="number" id="ipt_notaContinuada">
+
+    <label for="ipt_notaPI">Insira a nota da Pesquisa e Inovação: </label>
+    <input type="number" id="ipt_notaPI">
+
+    <label for="ipt_nome">Insira o nome do aluno: </label>
+    <input type="text" id="ipt_nome">
+
+    <button onclick="calcularMedia()">Calcular média</button>
+</body>
+
+    <script>
+        function calcularMedia(){
+            alert(`A média de ${ipt_nome.value} será de ${(Number(ipt_notaContinuada.value) * 0.4 + Number(ipt_notaPI.value) * 0.6)}`);
+        }
+    </script>
+</html>

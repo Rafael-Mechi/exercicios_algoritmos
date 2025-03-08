@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simu_bancário</title>
+</head>
+<body>
+    <button onclick="receber100()">Receber 100</button>
+    <button onclick="pagar50()">Pagar 50</button>
+
+    <h3 id="h3_bancario"></h3>
+</body>
+    <script>
+        var saldo = 0;
+
+        function receber100(){
+            saldo += 100;
+            h3_bancario.innerHTML = `Transferência de R$100 recebida! Saldo atual: ${saldo}`;
+        }
+
+        function pagar50(){
+            saldo -= 50;
+            h3_bancario.innerHTML = `Pagamento de R$50 efetuado! Saldo atual: ${saldo}`;
+        }
+    </script>
+
+</html>

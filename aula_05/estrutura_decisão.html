@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de decisão</title>
+</head>
+
+<body>
+
+
+    <input type="text" id="ipt_numero">
+    <button onclick="avaliarNumero()">Avaliar número</button>
+
+    <div id="div_respostaCerta"></div>
+    <div id="div_resposta"></div>
+
+    </div>
+
+</body>
+
+<script>
+    function avaliarNumero(){
+        var numeroResposta = 42;
+        var numeroDigitado = Number(ipt_numero.value);
+
+        console.log('Valor digitado: ', numeroDigitado);
+        if(numeroResposta == numeroDigitado){
+            div_respostaCerta.innerHTML = `Você sabe a resposta`;
+            console.log('Passei pelo if');
+        }
+
+        if(numeroDigitado < numeroResposta){
+            div_resposta.innerHTML = `O seu número é menor. Tente um maior`;
+        }
+
+        if(numeroDigitado > numeroResposta){
+            div_resposta.innerHTML = `O seu número é maior. Tente um menor`;
+        }
+
+    }
+
+
+</script>
+
+</html>

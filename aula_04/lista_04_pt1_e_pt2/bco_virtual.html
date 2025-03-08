@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bco_virtual</title>
+</head>
+<body>
+    <label for="ipt_valor"></label>
+    <input type="number" id="ipt_valor">
+
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="sacar()">Sacar</button>
+
+    <h3 id="h3_resultado"></h3>
+</body>
+
+    <script>
+        let saldo = 0;
+
+        function depositar(){
+            let valor = Number(ipt_valor.value);
+            saldo += valor;
+
+            h3_resultado.innerHTML = `Depósito de R$${ipt_valor.value} efetuado! Saldo atual: R$${saldo} `;
+        }
+
+        function sacar(){
+            let valor = Number(ipt_valor.value);
+            saldo -= valor;
+
+            h3_resultado.innerHTML = `Retirada de R$${ipt_valor.value} efetuada! Saldo atual: R$${saldo} `;
+        }
+    </script>
+</html>

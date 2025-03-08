@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idade Festa</title>
+</head>
+<body>
+    <label for="ipt_idade">Digite sua idade:</label>
+    <input type="number" id="ipt_idade" placeholder="Ex: 18">
+
+    <button onclick="calcularIdade()">Ir pra festa</button>
+
+    <h3 id="h3_festa"></h3>
+</body>
+
+    <script>
+        function calcularIdade(){
+         if(ipt_idade.value < 18){
+            alert('Pedir permissão pro responsável');
+         }   
+
+         else{
+            alert('#partiuFesta');
+         }
+        }
+    </script>
+</html>

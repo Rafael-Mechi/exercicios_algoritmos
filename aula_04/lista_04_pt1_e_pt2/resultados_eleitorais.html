@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Eleitorais</title>
+</head>
+
+<body>
+
+    <div>
+        <div>
+        <label for="ipt_candidatoA">Insira a quantidade de votos do candidato A</label>
+        <input type="number" id="ipt_candidatoA"> <br>
+
+        <label for="ipt_candidatoB">Insira a quantidade de votos do candidato B</label>
+        <input type="number" id="ipt_candidatoB"> <br>
+
+        <label for="ipt_brancos">Insira a quantidade de votos brancos</label>
+        <input type="number" id="ipt_brancos"> <br>
+
+        <label for="ipt_nulos">Insira a quantidade de votos nulos</label>
+        <input type="number" id="ipt_nulos"> <br>
+    </div>
+        <button onclick="calcularEleicao()">Resultado da Eleição</button>
+
+    </div>
+
+    <h3 id="h3_resultadoEleicao"></h3>
+
+</body>
+<script>
+    function calcularEleicao() {
+
+        var votoTotal = 0;
+        var invalidos = 0;
+        var somaInvalidos = 0;
+        var porcentagemCandidatoA = 0;
+        var porcentagemCandidatoB = 0;
+
+        votoTotal = Number(ipt_candidatoA.value) + Number(ipt_candidatoB.value) + Number(ipt_brancos.value) + Number(ipt_nulos.value);
+
+        porcentagemCandidatoA = Number(ipt_candidatoA.value) / votoTotal * 100;
+        porcentagemCandidatoB = Number(ipt_candidatoB.value) / votoTotal * 100;
+
+        somaInvalidos = Number(ipt_brancos.value) + Number(ipt_nulos.value);
+        invalidos = (Number(ipt_brancos.value) + Number(ipt_nulos.value)) / votoTotal * 100;
+        
+        h3_resultadoEleicao.innerHTML = `Total de votos: ${votoTotal} <br>
+        Candidato A: ${porcentagemCandidatoA}% (${ipt_candidatoA.value} votos) <br> 
+        Candidato B: ${porcentagemCandidatoB}% (${ipt_candidatoB.value} votos) <br>
+        Inválidos: ${invalidos}% (${somaInvalidos} votos)`;
+    }
+</script>
+
+</html>

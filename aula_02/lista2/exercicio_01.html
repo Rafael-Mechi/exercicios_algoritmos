@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+<body>
+    <h1>Bem vindo!</h1>
+    <p>Coloque as informações abaixo: </p>
+    
+    <label for="ipt_cidade">Cidade natal</label>
+    <input type="text" id = "ipt_cidade" placeholder="Ex: São Paulo">
+
+    <label>Ano de nascimento</label>
+    <input type="date" id = "ipt_data"> 
+
+    <button onclick="cadastrar()">Cadastrar</button>
+</body>
+
+    <script>
+        function cadastrar(){
+            alert("Você nasceu na cidade " + ipt_cidade.value + " em " + ipt_data.value);
+        }
+    </script>
+</html>

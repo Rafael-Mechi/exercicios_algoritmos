@@ -1,0 +1,27 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clima</title>
+    </head>
+    <body>
+        <label for="ipt_clima">Insira a temperatura</label>
+        <input type="number" id="ipt_clima">
+
+        <button onclick="calcularTemperatura()">Verificar clima</button>
+
+        <img src="" id="img_alimento" width="200px">
+    </body>
+        <script>
+            function calcularTemperatura(){
+                if(Number(ipt_clima.value) < 10){
+                    img_alimento.src = "https://images.tcdn.com.br/img/img_prod/450860/muda_de_maca_gala_climas_frios_ou_amenos_1m_enxertadas_566_1_20190611093558.jpg";
+                }
+
+                else{
+                    img_alimento.src = "https://static.vecteezy.com/system/resources/previews/015/138/714/large_2x/halved-rotten-apple-is-isolated-against-a-white-background-full-clipping-path-photo.jpg";
+                }
+            }
+        </script>
+    </html>

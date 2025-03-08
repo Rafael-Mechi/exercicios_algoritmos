@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequência</title>
+</head>
+<body>
+    <label for="ipt_frequencia">Insira a frequência do aluno</label>
+    <input type="number" id="ipt_frequencia">
+
+    <button onclick="analisarFrequencia()">Analisar frequência</button>
+
+    <img id="img_turista" src="" width="300px">
+    <img src="" id="img_estudioso" width="300px">
+</body>
+    <script>
+        function analisarFrequencia(){
+            if(ipt_frequencia.value < 50){  
+                img_turista.src = "https://www.shutterstock.com/image-photo/cheerful-tourist-using-cell-phone-260nw-2476924751.jpg";
+            }
+
+            else{
+                img_estudioso.src = "https://thumbs.dreamstime.com/b/menina-esperta-da-escola-que-l%C3%AA-um-livro-na-biblioteca-76155073.jpg";
+            }
+        }
+    </script>
+</html>

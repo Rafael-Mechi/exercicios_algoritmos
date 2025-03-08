@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilhete Único</title>
+</head>
+<body>
+    
+    <label for="ipt_valorPassagem">Digite o valor da passagem: </label>
+    <input type="number" id="ipt_valorPassagem">
+
+    <label for="ipt_viagensMensais">Viagens mensais: </label>
+    <input type="number" id="ipt_viagensMensais">
+
+    <button onclick="calcularEconomia()">Ver economia</button>
+
+</body>
+
+    <script>
+        function calcularEconomia() {
+            alert(`Você economizará R$${(ipt_valorPassagem.value * ipt_viagensMensais.value) / 2}`);
+        }
+    </script>
+</html>

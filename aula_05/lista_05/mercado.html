@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado</title>
+</head>
+<body>
+    <label for="ipt_chocolate">Insira a quantidade de chocolates comprados</label>
+    <input type="number" id="ipt_chocolate">
+
+    <button onclick="calcularCompra()">Compra</button>
+</body>
+    <script>
+        var valorChoco = 3.0;   
+
+        function calcularCompra(){
+            var qtdChoco = Number(ipt_chocolate.value);
+
+            if(qtdChoco >= 12){
+                valorChoco = 2.5;
+                
+            }
+            var total = valorChoco * qtdChoco; 
+
+            alert(`O valor de sua compra foi de ${total}`);
+        }
+    </script>
+</html>

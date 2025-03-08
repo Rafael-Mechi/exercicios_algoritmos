@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aposentadoria</title>
+</head>
+<body>
+
+    <label for="ipt_idade">Insira a idade:</label>
+    <input type="number" id="ipt_idade">
+
+    <button onclick="calculaHomem()">Homem</button>
+    <button onclick="calculaMulher()">Mulher</button>
+
+</body>
+
+    <script>
+        function calculaHomem(){
+            alert(`Restam ${(70 - ipt_idade.value)} anos para se aposentar.`);
+        }
+        function calculaMulher(){
+            alert(`Restam ${(60 - ipt_idade.value)} anos para se aposentar.`);
+        }
+    </script>
+</html>

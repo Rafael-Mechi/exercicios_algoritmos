@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior idade</title>
+</head>
+<body>
+    <input type="text" id="ipt_idade">
+    <button onclick="verificar()">Verificar maioridade</button>
+</body>
+
+    <script>
+        function verificar() {
+            var idadeDigitada = Number(ipt_idade.value);
+            if(idadeDigitada >= 18){
+                alert('Já pode ser preso');
+            }
+
+            else{
+                alert('Ainda não é maior de idade');
+            }
+        }
+    </script>
+</html>

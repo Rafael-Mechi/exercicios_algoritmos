@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financiamento Habitacional</title>
+</head>
+<body>
+    
+    <label for="ipt_renda">Insira a renda familiar</label>
+    <input type="number" id="ipt_renda">
+
+    <label for="ipt_prestacao">Insira o valor da prestação</label>
+    <input type="number" id="ipt_prestacao">
+
+    <button onclick="calcularFinanciamento()">Verificar financiamento</button>
+
+    <h3 id="h3_renda"></h3>
+    <h3 id="h3_complemento" style="color: red;"></h3>
+
+</body>
+    <script>
+        function calcularFinanciamento(){
+            var renda = Number(ipt_renda.value);
+            var prestacao = Number(ipt_prestacao.value);
+
+            var porcentagemRenda = (prestacao / renda) * 100;
+
+            h3_renda.innerHTML = `A prestação corresponde a ${porcentagemRenda}% da renda familiar`;
+
+            if(porcentagemRenda > 30){
+                h3_complemento.innerHTML = `<i><b>Será necessário complementar a renda familiar</b></i>`;
+            }
+        }
+    </script>
+</html>

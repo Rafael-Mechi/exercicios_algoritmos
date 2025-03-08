@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoescola</title>
+</head>
+<body>
+    <label for="ipt_nome">Insira o nome</label>
+    <input type="text" id="ipt_nome">
+
+    <label for="ipt_idade">Insira a idade</label>
+    <input type="number" id="ipt_idade">
+
+    <button onclick="avaliarAluno()">Avaliar aluno</button>
+</body>
+    <script>
+        function avaliarAluno(){
+            if(ipt_idade.value >= 18){
+                alert(`${ipt_nome.value}, vamos tirar a CNH?`);
+            }
+            else{
+                alert(`${ipt_nome.value}, vai jogar PlayStation!`);
+            }
+        }
+    </script>
+</html>

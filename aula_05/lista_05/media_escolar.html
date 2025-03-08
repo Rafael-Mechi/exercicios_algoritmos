@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média Escolar Paty</title>
+</head>
+<body>
+
+    <label for="ipt_n1">Insira a nota 1:</label>
+    <input type="number" id="ipt_n1" placeholder="Ex: 10">
+
+    <label for="ipt_n2">Insira a nota 2:</label>
+    <input type="number" id="ipt_n2" placeholder="Ex: 10">
+
+    <label for="ipt_n3">Insira a nota 3:</label>
+    <input type="number" id="ipt_n3" placeholder="Ex: 10">
+
+    <h3 id="h3_media"></h3>
+    <h3 id="h3_acimaMedia"></h3>
+
+    <button onclick="calcularMedia()">Analisar desempenho</button>
+    
+</body>
+    <script>
+        function calcularMedia(){
+            var nota1 = Number(ipt_n1.value);
+            var nota2 = Number(ipt_n2.value);
+            var nota3 = Number(ipt_n3.value);
+
+            var media = (nota1 + nota2 + nota3) / 3;
+        
+            h3_media.innerHTML = `Sua média foi de ${media}`;
+
+            if(media > 9.4){
+                h3_acimaMedia.innerHTML = `Parabéns, você é fora de série!`;
+            }
+        }
+    </script>
+</html>

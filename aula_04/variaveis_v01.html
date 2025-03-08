@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="ipt_idade">
+
+    <button onclick="aposentarHomem()"></button>
+    <button onclick="aposentarMulher()"></button>
+</body>
+
+<script>
+    function aposentarHomem(){
+
+        var idade = ipt_idade.value;
+
+        alert(`Restam ${(70 - idade)} anos para se aposentar.`);
+    }
+
+    function aposentarMulher(){
+        alert(`Restam ${(60 - ipt_idade.value)} anos para se aposentar.`);
+    }
+</script>
+</html>
