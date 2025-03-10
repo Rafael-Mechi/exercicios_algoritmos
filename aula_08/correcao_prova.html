@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="ipt_energia">Energia consumida:</label>
+    <input type="number" id="ipt_energia">
+    
+    <label for="ipt_bandeira">Bandeira</label>
+    <input type="text" id="ipt_bandeira">
+
+    <label for="ipt_mb">Quantidade de MB usados:</label>
+    <input type="number" id="ipt_mb">
+
+    <label for="ipt_possui_linha">Possui linha telefônica cadastrada?</label>
+    <input type="text" id="ipt_possui_linha">
+
+    <button onclick="calcularDespesas()">Calcular</button>
+    
+</body>
+    <script>
+        function calcularDespesas(){
+            var energia = Number(ipt_energia.value);
+            var bandeira = ipt_bandeira.value;
+            var internet = Number(ipt_mb.value);
+            var linha = ipt_possui_linha.value;
+
+            // calculo da energia
+            var valorTotalEnergia = 0;
+            var valorTotalInternet = 0;
+
+            if(bandeira == "verde"){
+                valorTotalEnergia = energia * 0.75;
+            }
+
+            else if(bandeira == "amarela"){
+                valorTotalEnergia = energia * 0.90;
+            }
+
+            else {
+                valorTotalEnergia = energia * 1;
+            }
+
+            if(energia <= 50){
+                valorTotalEnergia -=  (valorTotalEnergia * 0.10);
+            }
+
+            console.log("Valor de energia: ", valorTotalEnergia);
+
+
+            // calculo da internet 
+            valorTotalInternet = internet * 0.80;
+
+            if(linha == "sim"){
+                valorTotalInternet = valorTotalInternet + (internet * 0.35);
+            }
+
+            else{
+                valorTotalInternet = valorTotalInternet - (internet * 0.075);
+            }
+
+            console.log("Valor de intenet: ", valorTotalInternet);
+        }
+    </script>
+</html>
