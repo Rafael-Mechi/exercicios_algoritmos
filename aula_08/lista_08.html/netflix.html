@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+</head>
+<body>
+    <label for="ipt_netflix">Insira a hora do dia que você costuma acessar a Netflix</label>
+    <input type="number" id="ipt_netflix">
+
+    <button onclick="recomendacao()">Verificar recomendação</button>
+</body>
+    <script>
+        function recomendacao(){
+            var hora = Number(ipt_netflix.value);
+
+            if(hora >= 19 && hora <= 21){
+                alert('Não é recomendável que você assista sua série favorita no horário ' + hora + '!');
+            }
+
+            else{
+                alert('O horário ' + hora + ' é adequado para assistir sua série favorita!');
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticação de duas etapas</title>
+</head>
+<body>
+    
+    <label for="ipt_login">Insira seu login</label>
+    <input type="text" id="ipt_login">
+
+    <label for="ipt_senha">Insira sua senha</label>
+    <input type="text" id="ipt_senha">
+
+    <label for="ipt_codigo">Insira seu código de segurança</label>
+    <input type="number" id="ipt_codigo">
+
+    <button onclick="entrar()">Entrar</button>
+</body>
+    <script>
+        function entrar(){
+            var login = ipt_login.value;
+            var senha = ipt_senha.value;
+            var codigo = Number(ipt_codigo.value);
+
+            if(login == "SPTech" && senha == "digital" && codigo == "123"){
+               alert("Usuário autenticado com sucesso"); 
+            }
+            else {
+                alert("Falha na autenticação");
+            }
+        }
+    </script>
+</html>

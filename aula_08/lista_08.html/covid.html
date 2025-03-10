@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid</title>
+</head>
+<body>
+    <label for="ipt_rendaUsuario">Insira sua renda</label>
+    <input type="number" id="ipt_rendaUsuario">
+
+    <label for="ipt_rendaFamilia">Insira a renda da família</label>
+    <input type="number" id="ipt_rendaFamilia">
+
+    <button onclick="verificarAjuda()">Verificar ajuda</button>
+</body>
+    <script>
+        function verificarAjuda(){
+            var usuario = Number(ipt_rendaUsuario.value);
+            var familia = Number(ipt_rendaFamilia.value);
+
+            if(usuario <= 1050 && familia <= 2100){
+                alert("Você terá direito!");
+            }
+
+            else{
+                alert("Você NÃO terá direito");
+            }
+        }
+    </script>
+</html>
