@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="verificar()">Verificar</button>
+</body>
+    <script>
+        function verificar(){
+            var valorCompra = 30.5;
+            var saldoCredito = 42.5;
+            var saldoDebito = 5.5;
+
+            if(saldoCredito >= valorCompra || saldoDebito >= valorCompra){
+                console.log('Pode comprar!');
+            }
+
+            var login = "admin";
+            var senha = 123;
+
+            var loginDigitado = 'x';
+            var senhaDigitada = 123;
+
+            if(login == loginDigitado && senha == senhaDigitada){
+                console.log("Pode entrar");
+            }
+
+            if(login != loginDigitado || senha != senhaDigitada){
+                console.log("Pode Não pode entrar");
+            }
+
+        }
+    </script>
+</html>

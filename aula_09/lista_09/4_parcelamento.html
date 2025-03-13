@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcelamento</title>
+</head>
+<body>
+    <label for="ipt_pagamento">Insira a forma de pagamento (Dinheiro, Cartão de débito, Cartão de crédito, Boleto)</label>
+    <input type="text" id="ipt_pagamento">
+
+    <button onclick="verificar()">Analisar compra</button>
+
+    <h3 id="h3_resposta"></h3>
+</body>
+    <script>
+        function verificar(){
+            var pagamento = ipt_pagamento.value;
+
+            if(pagamento == "Dinheiro" || pagamento == "Cartão de débito"){
+                h3_resposta.innerHTML = `Você terá que pagar a vista`;
+            }
+
+            else if(pagamento == "Cartão de crédito" || pagamento == "Boleto"){
+                h3_resposta.innerHTML = `Pagamento poderá ser parcelado`;
+            }
+
+            else{
+                alert("Entrada inválida");
+            }
+        }
+    </script>
+</html>
