@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_qtdProduto">Insira quantos produtos você comprou</label>
+    <input type="number" id="ipt_qtdProduto">
+
+    <label for="ipt_gasto">Insira quanto você ganha</label>
+    <input type="number" id="ipt_gasto">
+
+    <input name="vip" type="radio" id="user_vip"> Usuário Vip
+
+
+    <button onclick="verificar()">Verificar</button>
+
+    <h3 id="h3_resultado"></h3>
+
+</body>
+
+    <script>
+        function verificar(){
+            var qtdProduto = Number(ipt_qtdProduto.value);
+            var gasto = Number(ipt_gasto.value);
+            var usuarioVip = user_vip.checked;
+
+            var desconto = 0;
+            var pontos = 0;
+
+            if(qtdProduto > 10){
+                if(gasto > 500 || usuarioVip){
+                    desconto = 10;
+                } else if(gasto > 1000 && usuarioVip){
+                    desconto += 15;  
+                }
+            } else if(((qtdProduto >= 6 && qtdProduto) <= 10 && (gasto >= 200 && gasto <= 500)) || usuarioVip){
+                desconto = 5;
+            }
+
+            if(qtdProduto > 5 && (gasto > 200 || usuarioVip)){
+                pontos = 100;
+            }
+
+            else if(gasto > 500 && (qtdProdutos >= 5 && qtdProduto <= 10)){
+                pontos += 100;
+            }
+
+            h3_resultado.innerHTML = `Desconto: ${desconto}% | Recompensa: ${pontos}`;
+
+        }
+    </script>
+</html>
