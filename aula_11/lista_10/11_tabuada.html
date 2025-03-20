@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <label for="ipt_numero">Insira um número para a tabuada</label>
+    <input type="number" id="ipt_numero">
+
+    <button onclick="tabuada()">Ver tabuada</button>
+
+    <div id="resposta"></div>
+    
+</body>
+    <script>
+        var cont = 1;
+
+        function tabuada() {
+            var numero = Number(ipt_numero.value);
+            while (cont <= 12) {
+                if (cont % 2 == 0) {
+                    resposta.innerHTML += `<span style="color: blue;">${numero} X ${cont} = ${numero * cont}</span><br>`;
+                } else {
+                    resposta.innerHTML += `<span style="color: red;">${numero} X ${cont} = ${numero * cont}</span><br>`;
+                }
+                cont++;
+            }
+        }
+    </script>
+</html>

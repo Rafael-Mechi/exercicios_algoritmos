@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pares intervalo</title>
+</head>
+<body>
+    <label for="ipt_n1">Insira um número</label>
+    <input type="number" id="ipt_n1">
+
+    <label for="ipt_n2">Insira um segundo número</label>
+    <input type="number" id="ipt_n2">
+
+    <button onclick="par()">S2 pares</button>
+
+    <div id="resposta"></div>
+</body>
+<script>
+
+    function par(){
+        var n1 = Number(ipt_n1.value);
+        var n2 = Number(ipt_n2.value);
+
+        var cont = n1;
+
+        while(cont <= n2){
+            if(cont % 2 == 0){
+                resposta.innerHTML += `${cont} <br>`;
+            }
+            cont++;
+        }
+    }
+</script>
+</html>
