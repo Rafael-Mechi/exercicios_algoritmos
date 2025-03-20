@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva o sete</title>
+</head>
+<body>
+    <label for="ipt_numero">Insira um número entre 0 a 200</label>
+    <input type="number" id="ipt_numero">
+
+    <button onclick="multiplo()">Viva o 7!</button>
+
+    <div id="div_multiplo"></div>
+</body>
+    <script>
+        var cont = 1;
+
+        function multiplo(){
+            var n = Number(ipt_numero.value);
+
+            if(n < 0 || n > 200){
+                alert("Número inválido");
+            }
+
+            else{
+                while(cont <= n){
+                    if(cont % 7 == 0){
+                        div_multiplo.innerHTML += `${cont} <br>`;
+                    }
+                }
+                cont++;
+            }
+        }
+    </script>
+</html>

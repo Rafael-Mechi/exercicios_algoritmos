@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferência compra/title>
+</head>
+<body>
+    <label for="ipt_tamanho">Insira o tamanho do celular em polegadas</label>
+    <input type="number" id="ipt_tamanho">
+
+    <label for="ipt_cor">Insira a cor</label>
+    <input type="text" id="ipt_cor">
+
+    <button onclick="verificar()">Será que ele gosta?</button>
+
+    <br>
+
+    <img src="" id="reacao" width="200px">
+</body>
+<script>
+
+
+    function verificar(){
+        var tamanho = Number(ipt_tamanho.value);
+        var cor = Number(ipt_cor.value);
+
+        if(tamanho >  6.5 && (cor == "prata" || "preto")){
+            reacao.src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhappy-person&psig=AOvVaw0iK4XehEZVdSh_KKG72vSs&ust=1742561362799000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOD644vZmIwDFQAAAAAdAAAAABAJ";
+        }
+
+        else{
+            reacao.src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fpt%2Fsearch%2Fman-working-sad-face&psig=AOvVaw0wCXj3wvLpq7PCnXeUkdYf&ust=1742561396824000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjCjZrZmIwDFQAAAAAdAAAAABAE";
+        }
+    }
+
+</script>
+</html>

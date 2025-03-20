@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <input name="bilhete" type="radio" id="comum">Comum
+        <input name="bilhete" type="radio" id="estudante">Estudante
+        <input name="bilhete" type="radio" id="idoso">Idoso/PNE
+    </div>
+
+    <br>
+
+    <div>
+        <input name="tipo" type="radio" id="unica">Passagem única
+        <input name="tipo" type="radio" id="integracao">Passagem integração
+    </div>
+
+    <button onclick="simular()">Simular preco</button>
+
+</body>
+    <script>
+        var valorPassagem = 4.40;
+        var valorIntegracao = 5.90;
+        var desconto = 0.50;
+
+        function simular(){
+            var comum = comum.checked;
+            var estudante = estudante.checked;
+            var idoso = idoso.checked;
+
+            var unica = unica.checked;
+            var integracao = integracao.checked;
+
+            if(estudante){
+                valorPassagem *= desconto;
+                valorIntegracao *= desconto;
+            }
+
+            else if(idoso){
+                valorPassagem = 0;
+                valorIntegracao = 0;
+            }
+
+            if(unica){
+                alert(`Valor da passagem escolhida: ${valorPassagem}`);
+            }
+
+            else if(integracao){
+                alert(`Valor da passagem escolhida: ${valorIntegracao}`);
+            }
+        }
+    </script>
+</html>

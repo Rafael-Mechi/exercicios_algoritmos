@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="verificar()">Números cabalísticos</button>
+
+    <div id="div_cabalistico"></div>
+</body>
+    <script>
+        var n = 1;
+
+        function verificar(){
+        while(n <= 30){
+            if((n != 3 && n != 4 && n != 7 && n != 10 && n != 12)){
+                div_cabalistico.innerHTML += `${n} <br>`;
+            }
+            n++;
+        }
+
+    }
+    </script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Múltiplo de 5</title>
+</head>
+<body>
+    <label for="ipt_numero">Insira um número entre 20 a 100</label>
+    <input type="number" id="ipt_numero">
+
+    <button onclick="multiplo()">Adoro múltiplos de 5</button>
+
+    <div id="div_multiplo"></div>
+</body>
+    <script>
+        var cont = 1;
+
+        function multiplo(){
+            var n = Number(ipt_numero.value);
+
+            if(n < 20 || n > 100){
+                alert("Número inválido");
+            }
+
+            else{
+                while(cont <= n){
+                    if(cont % 5 == 0){
+                        div_multiplo.innerHTML += `${cont} <br>`;
+                    }
+
+                    cont++;
+                }
+            }
+        }
+
+    </script>
+</html>
