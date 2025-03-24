@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coca-cola</title>
+</head>
+<body>
+    <label for="ipt_coca">Insira quantas Coca-cola você já bebeu na vida</label>
+    <input type="number" id="ipt_coca">
+
+    <button onclick="calcular()">Ver quantiade</button>
+
+    <div id="resposta"></div>
+</body>
+    <script>
+        function calcular(){
+            var qtdLata = Number(ipt_coca.value);
+            resposta.innerHTML = '';
+
+            for(var i = 1; i <= qtdLata; i++){
+                resposta.innerHTML += `${i} `;
+            }
+
+        }
+    </script>
+</html>

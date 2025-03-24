@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre melhora</title>
+</head>
+<body>
+    <button onclick="sobre()">Diga algo sobre a matéria de Algoritmos</button>
+
+    <div id="div_sobre"></div>
+</body>
+    <script>
+        function sobre(){
+            for(var i = 1; i <= 7; i++){
+                div_sobre.innerHTML += `${i}º colocação <br>`;
+            }
+        }
+    </script>
+</html>

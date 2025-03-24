@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papagaio</title>
+</head>
+<body>
+    <label for="ipt_frase">Insira uma frase</label>
+    <input type="text" id="ipt_frase">
+
+    <label for="ipt_repeticao">Insira uma quantidade de vezes para repetir</label>
+    <input type="text" id="ipt_repeticao">
+
+    <button onclick="repetir()">Papagaio</button>
+</body>
+    <script>
+        
+        function repetir(){
+        var frase = ipt_frase.value;
+        var repeticao = Number(ipt_repeticao.value);
+        
+        for(var i = 0; i < repeticao; i++){
+            alert(frase);
+        }
+    }
+    </script>
+</html>
