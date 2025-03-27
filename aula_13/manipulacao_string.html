@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_frase">
+    <button onclick="analisar()">Analisar Frase</button>
+
+    <div id="div_resultado"></div>
+</body>
+    <script>
+        function analisar(){
+            var fraseDigitada = ipt_frase.value;
+            var fraseFinal = "";
+
+            var tamanhoFrase = fraseDigitada.length;
+            fraseFinal += `Tamanho da frase: ${tamanhoFrase} <br>`
+
+            var terminaComPontoCom = fraseDigitada.endsWith(".com");
+            fraseFinal += `Termina com .com? ${terminaComPontoCom} <br>`;
+
+            var terminaComPontoBr = fraseDigitada.endsWith(".br");
+            fraseFinal += `Termina com .br? ${terminaComPontoBr} <br>`;
+
+            var comecaComEu = fraseDigitada.startsWith("Eu");
+            fraseFinal += `Termina com Eu? ${comecaComEu} <br>`;
+
+            var primeiraLetra = fraseDigitada[0];
+            fraseFinal += `Primeira letra [0]: ${primeiraLetra} <br>`;
+
+            var indiceDoBob = fraseDigitada.indexOf("Bob");   
+            fraseFinal += `Índice do Bob: ${indiceDoBob} <br>`;        
+
+            var possuiBob = fraseDigitada.includes("Bob");
+            fraseFinal += `Bob foi encontrado na frase?: ${possuiBob} <br>`;
+
+            var fraseMaiuscula = fraseDigitada.toUpperCase();
+            fraseFinal += `Frase em maiúscula: ${fraseMaiuscula} <br>`;
+
+            var fraseMinuscula = fraseDigitada.toLowerCase();
+            fraseFinal += `Frase em minúscula: ${fraseMinuscula} <br>`;
+
+            div_resultado.innerHTML = fraseFinal;
+        }
+    </script>
+</html>
