@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Luffy</title>
+</head>
+<body>
+    <label for="ipt_marinheiro">Insira a quantidade de marinheiros</label>
+    <input type="number" id="ipt_marinheiro">
+
+    <br>
+
+    <label for="ipt_carne">Insira a quantidade de carne</label>
+    <input type="number" id="ipt_carne">
+
+    <br>
+
+    <label for="ipt_batalha">Insira a quantidade de batalhas</label>
+    <input type="number" id="ipt_batalha">
+
+    <br>
+
+    <button onclick="batalhar()">Batalhar</button>
+
+    <br>
+
+    <div id="resposta"></div>
+</body>
+    <script>
+        function batalhar(){
+            var qtdEnergia = 100;
+            var qtdMarinheiros = Number(ipt_marinheiro.value);
+            var qtdCarnes = Number(ipt_carne.value);
+            var qtdBatalhas = Number(ipt_batalha.value);
+
+            var fraseFinal = '';
+
+            for(var i = 1; i <= qtdBatalhas; i++){
+                fraseFinal += `<br> ----- Iniciando a ${i}ª batalha ----- <br><br>`;
+                
+                if(qtdEnergia < 10 && qtdCarnes > 0){
+                    qtdEnergia = 100;
+                    qtdCarnes --;
+                    fraseFinal += `Recuperando energia no início da batalha`;
+                }
+
+                if(i > 1){
+                    fraseFinal += `Você passou da primeira batalha e perdeu 10 de energia <br><br>`;
+                    qtdEnergia -= 10;
+                }
+
+                for(var j = 1; j <= qtdMarinheiros; j++){
+                    fraseFinal += `Tentando matar o ${j}º marinheiro <br><br>
+                    Energia: ${qtdEnergia} - Carnes: ${qtdCarnes} <br>`;
+
+                    if(qtdEnergia >= 5){
+                        fraseFinal += `Matando o ${j}º marinheiro <br>`;
+                        qtdEnergia -= 5;
+                    }
+
+                    else{
+                        fraseFinal += `sem energia <br><br>`;
+
+                        if(qtdCarnes > 0){
+                            qtdEnergia = 100;
+                            qtdCarnes --;
+                            fraseFinal += `Você ficou sem energia, mas comeu uma carne`;
+                        }
+
+                            else{
+                                fraseFinal += `Fim da linha`;
+                                i = qtdBatalhas +1;
+                                j = qtdMarinheiros +1;
+                            }
+                    }
+                }
+            }
+
+            resposta.innerHTML = fraseFinal;
+        }
+    </script>
+</html>

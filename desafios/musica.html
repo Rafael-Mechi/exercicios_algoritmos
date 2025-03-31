@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Música</title>
+    <!--Guilherme Trevizan & Rafael Mechi-->
+</head>
+<body>
+    <label for="ipt_qtdMusica">Insira a quantidade de música que você deseja ouvir</label>
+    <input type="number" id="ipt_qtdMusica">
+
+    <button onclick="show()">Começar o Show</button>
+</body>
+    <script>
+        function show(){
+            var qtdMusica = Number(ipt_qtdMusica.value);
+            var frase = '';
+            var qtdTocada = 0;
+            var qtdAprovada = 0;
+            var qtdReprovrada = 0;
+
+            for(var i = 1; i <= qtdMusica; i++){
+                var musicaDigitada = prompt(`Insira a ${i}ª música`);
+                frase += musicaDigitada;
+
+                var aprovacao = prompt("Você gosta da música? (s/n)");
+                    if(aprovacao == 's'){
+                        qtdAprovada ++;
+                    }else{
+                        qtdReprovrada ++;
+                    }
+            }
+
+            //continuar a partir daqui (4)
+        }
+    </script>
+</html>
