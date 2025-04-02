@@ -11,28 +11,62 @@
     <input type="number" id="ipt_qtdMusica">
 
     <button onclick="show()">Começar o Show</button>
+
+    <div id="resultado"></div>
 </body>
     <script>
         function show(){
             var qtdMusica = Number(ipt_qtdMusica.value);
-            var frase = '';
+            var musicas = '';
             var qtdTocada = 0;
             var qtdAprovada = 0;
             var qtdReprovrada = 0;
+            var musicaTocando = '';
 
             for(var i = 1; i <= qtdMusica; i++){
                 var musicaDigitada = prompt(`Insira a ${i}ª música`);
-                frase += musicaDigitada;
+                musicas += musicaDigitada + '|';
 
-                var aprovacao = prompt("Você gosta da música? (s/n)");
-                    if(aprovacao == 's'){
+                var aprovacao = prompt("Você gosta da música? (sim/não)");
+                    if(aprovacao.toLowerCase() == 'sim'){
                         qtdAprovada ++;
                     }else{
                         qtdReprovrada ++;
                     }
             }
 
-            //continuar a partir daqui (4)
+            //separa as músicas por "|"
+            var separacao = musicas.split("|");
+
+            // essa variável será usada futuramente para armazenar a música que está tocando temporariamente
+            var ultimaMusica = '';
+
+            //essa variável serve para contarmos a enésima musica da lista
+            var contadorMusica = 0;
+
+            for (var i = 0; i < musicas.length; i++) {
+                
+                //se o caractere do índice for "|", significa que chegamos no final do nome da música
+                if (musicas[i] == "|") {
+                    contadorMusica++;
+                    var proximaMusica = prompt(`Tocando ${contadorMusica}ª música: ${ultimaMusica}`);
+                    
+                    while(proximaMusica == ultimaMusica){
+                        proximaMusica = prompt(`Essa música acabou de tocar, escolha outra! (Música atual: ${ultimaMusica})`);
+                    }
+                    ultimaMusica = '';
+                } else {
+
+                    // aqui a musica vai sendo armazenada letra por letra
+                    ultimaMusica += musicas[i];
+                }
+            }
+
+            resultado.innerHTML += `${qtdMusica} músicas foram tocadas<br>
+            ${qtdAprovada} músicas foram aprovadas<br>
+            ${qtdReprovrada} músicas foram reprovadas<br>`;
+
+            
         }
     </script>
 </html>
