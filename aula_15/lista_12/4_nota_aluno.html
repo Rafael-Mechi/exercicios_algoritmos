@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota aluno</title>
+</head>
+<body>
+    <button onclick="randomizarNota()">Sortear Nota para Aluno</button>
+    <br>
+    <div id="resposta"></div>
+</body>
+    <script>
+        function randomizarNota(){
+            var inicio = 0;
+            var fim = 10;
+            var aux = Math.random();
+            var sorteadoFinal = (aux * (fim - inicio) + inicio).toFixed(1);
+
+            resposta.innerHTML = sorteadoFinal;
+        }
+    </script>
+</html>

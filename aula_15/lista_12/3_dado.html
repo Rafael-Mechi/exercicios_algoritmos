@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dado</title>
+
+    <style>
+        #resposta{
+            width: 100px;
+            background-color:black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="jogarDado()">Jogar dado</button>
+    <br>
+    <br>
+    <div id="resposta"></div>
+</body>
+    <script>
+        function jogarDado(){
+            var inicio = 1;
+            var fim = 20;
+            var aux = Math.random();
+            var sorteadoFinal = (aux * (fim - inicio) + inicio).toFixed();
+
+            resposta.innerHTML = sorteadoFinal;
+        }
+    </script>
+</html>

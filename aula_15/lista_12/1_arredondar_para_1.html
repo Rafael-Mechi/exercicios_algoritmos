@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arredondar para 1</title>
+</head>
+<body>
+    <button onclick="sortear()">Sortear</button>
+ 
+    <div id="div_resposta"></div>
+</body>
+    <script>
+        function sortear(){
+            var numeroAleatorio = Math.random();
+            var frase = numeroAleatorio + '';
+
+            if(numeroAleatorio > 0.5){
+                frase += "<br>Eu arredondaria para 1";
+            }
+            else{
+                frase += "<br>Eu arredondaria para 0";
+            }
+
+            div_resposta.innerHTML = frase;
+        }
+    </script>
+</html>

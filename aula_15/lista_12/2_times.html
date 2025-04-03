@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times de SP</title>
+</head>
+<body>
+    <button onclick="sortearTime()">Sortear Time</button>
+    <br>
+    <br>
+    <div id="time"></div>
+</body>
+    <script>
+        function sortearTime(){
+            var inicio = 1;
+            var fim = 4;
+            var aux = Math.random();
+            var sorteadoFinal = (aux * (fim - inicio) + inicio).toFixed();
+
+            if(sorteadoFinal == 1){
+                time.innerHTML = '<img height="150px" width="150px" src="corinthians.png">';
+            }
+            else if(sorteadoFinal == 2){
+                time.innerHTML = '<img height="150px" width="150px" src="palmeiras.png">';
+            }
+
+            else if(sorteadoFinal == 3){
+                time.innerHTML = '<img height="150px" width="150px" src="santos.png">';
+            }
+
+            else {
+                time.innerHTML = '<img height="150px" width="150px" src="sao_paulo.png">';
+            }
+
+            var timeAleatorio = Math.random();
+        }
+    </script>
+</html>
