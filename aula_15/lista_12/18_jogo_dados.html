@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo dados</title>
+</head>
+
+<body>
+    <div id="resultado">Jogador 1: 0<br><br>Jogador 2: 0<br><br>Empate: 0</div>
+    <br>
+    <button onclick="jogar()">Jogar</button>
+    <div id="mensagem"></div>
+
+    <script>
+        var resultadoJogador1 = 0;
+        var resultadoJogador2 = 0;
+        var empate = 0;
+
+        function jogar() {
+            var min = 1;
+            var max = 6;
+            var aux1 = Math.random();
+            var aux2 = Math.random();
+            var dadoJogador1 = (aux1 * (max - min) + min).toFixed();
+            var dadoJogador2 = (aux2 * (max - min) + min).toFixed();
+
+            if (dadoJogador1 > dadoJogador2) {
+                resultadoJogador1++;
+            }
+
+            else if (dadoJogador2 > dadoJogador1) {
+                resultadoJogador2++;
+            }
+
+            else {
+                empate++;
+            }
+
+            resultado.innerHTML = `Jogador 1: ${resultadoJogador1}<br>Jogador 2: ${resultadoJogador2}<br>Empate: ${empate}`;
+
+            if (resultadoJogador1 > resultadoJogador2) {
+                mensagem.innerHTML = "O jogador 1 está vencendo!";
+
+            }
+
+            else if (resultadoJogador2 > resultadoJogador1) {
+                mensagem.innerHTML = "O jogador 2 está vencendo!";
+            }
+
+            else {
+                mensagem.innerHTML = "O jogo está empatado!";
+            }
+        }
+    </script>
+</body>
+
+</html>

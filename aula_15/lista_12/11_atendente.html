@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendente</title>
+</head>
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <div id="div_nota"></div>
+</body>
+    <script>
+        function avaliar(){
+            var min = 0;
+            var max = 5;
+            var aux = Math.random();
+            var valor = (aux * (max - min) + min).toFixed(1);
+
+            if(valor >= 0 && valor <= 0.5){
+                div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/muito triste.jpg" alt="Nota 0.5" height="200px" width="200px">`;
+            }
+
+            else if(valor > 0.5 && valor <= 1.5){
+                div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/triste.jpg" alt="Nota 1.5" height="200px" width="200px">`;
+            }
+
+            else if(valor > 1.5 && valor <= 3.5){
+                div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/neutro.png" alt="Nota 2.5" height="200px" width="200px">`;
+            }
+
+            else if(valor > 3.5 && valor <= 4.5){
+                div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/feliz.png" alt="Nota 3.5" height="200px" width="200px">`;
+            }
+
+            else{
+                div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/muito feliz.png" alt="Nota 4.5" height="200px" width="200px">`;
+            }
+        }
+    </script>
+</html>

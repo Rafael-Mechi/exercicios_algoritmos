@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dado</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <button onclick="numero1()">Dado Jogador 1</button>
+            <div id="dado1"></div>
+        </div>
+        <div>
+            <button onclick="numero2()">Dado Jogador 2</button>
+            <div id="dado2"></div>
+        </div>
+        <button onclick="verificar()">Comparar Resultados</button>
+
+        <div id="div_resultado"></div>
+    </div>
+
+    
+</body>
+    <script>
+            var min = 0;
+            var max = 6;
+
+        function numero1(){
+            var aux = Math.random();
+            valor = (aux * (max - min) + min).toFixed();
+
+            dado1.innerHTML = valor;
+        }
+
+        function numero2(){
+            var aux = Math.random();
+            valor = (aux * (max - min) + min).toFixed();
+
+            dado2.innerHTML = valor;
+        }
+
+        function verificar(){
+            if(dado1.innerHTML > dado2.innerHTML){
+                div_resultado.innerHTML = "Jogador 1 ganhou!";
+            }
+
+            else if(dado1.innerHTML < dado2.innerHTML){
+                div_resultado.innerHTML = "Jogador 2 ganhou!";
+            }
+
+            else{
+                div_resultado.innerHTML = "Empate!";
+
+            }
+        }
+    </script>
+</html>

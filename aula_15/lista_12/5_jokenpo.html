@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpo</title>
+    <style>
+        .imagens {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <label>
+        <input type="radio" name="jogada" value="pedra" id="_pedra">Pedra</label>
+    <br>
+
+    <label>
+        <input type="radio" name="jogada" value="papel" id="_papel">Papel</label>
+    <br>
+
+    <label>
+        <input type="radio" name="jogada" value="tesoura" id="_tesoura">Tesoura</label>
+    <br>
+
+        <button onclick="jokenpo()">Jogar</button>
+
+    <div class="imagens">
+        <div id="imgJogador"></div>
+        <div id="imgCpu"></div>
+    </div>
+     
+    <div id="pontosJogador"></div>
+
+    <div id="pontosCpu"></div>
+
+    <div id="resultado"></div>
+
+    
+</body>
+<script>
+    var qtdVitoriasJogador = 0;
+    var qtdVitoriasCpu = 0;
+    function jokenpo() {
+        var inicio = 1;
+        var fim = 3;
+        var aux = Math.random();
+        var jogadaCpu = (aux * (fim - inicio) + inicio).toFixed();
+
+        
+
+        var jogadaJogador = '';
+
+        if(_pedra.checked){
+            var jogadaJogador = 1;
+            imgJogador.innerHTML = '<img height="200px" src="imagens/pedra.jpg">';
+        }
+        else if(_papel.checked){
+            var jogadaJogador = 2;
+            imgJogador.innerHTML = '<img height="200px" src="imagens/papel.jpg">';
+        }
+        else if(_tesoura.checked){
+            var jogadaJogador = 3;
+            imgJogador.innerHTML = '<img height="200px" src="imagens/tesoura.jpg">';
+        } 
+
+        if(jogadaCpu == 1){
+            imgCpu.innerHTML = '<img height="200px" src="imagens/pedra.jpg">';
+        }
+        else if(jogadaCpu == 2){
+            imgCpu.innerHTML = '<img height="200px" src="imagens/papel.jpg">';
+        }
+        else if(jogadaCpu == 3){
+            imgCpu.innerHTML = '<img height="200px" src="imagens/tesoura.jpg">';
+
+        }
+
+        if(jogadaJogador == jogadaCpu){
+            resultado.innerHTML = 'Empate <br>';
+        }
+        else if((jogadaJogador == 1 && jogadaCpu == 3) || (jogadaJogador == 2 && jogadaCpu == 1) || (jogadaJogador == 3 && jogadaCpu == 2)){
+            resultado.innerHTML = 'Você ganhou <br>';
+            qtdVitoriasJogador++;
+        }
+        else{
+            resultado.innerHTML = 'Você perdeu <br>';
+            qtdVitoriasCpu++;
+        }
+
+        resultado.innerHTML += `Jogador 1: ${qtdVitoriasJogador} vitória(s)<br> Jogador 2 (CPU): ${qtdVitoriasCpu} vitória(s)`;
+        
+        
+    }
+</script>
+
+</html>

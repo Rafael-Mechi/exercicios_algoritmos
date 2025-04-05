@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua</title>
+</head>
+<body>
+    <button onclick="lua()">Ver a Lua</button>
+    <div id="resultado"></div>
+
+    <script>
+        function lua() {
+            var min = 1;
+            var max = 31;
+            var aux = Math.random();
+            var dia = (aux * (max - min) + min).toFixed();
+
+            var frase = `Dia sorteado: ${dia}<br>`;
+
+            if (dia >= 1 && dia <= 7) {
+                frase += `Fase da Lua: Lua nova<br><img src="imagens/lua_nova.jpg" height="150px" width="150px">`;
+            } 
+            
+            else if (dia >= 8 && dia <= 16) {
+                frase += `Fase da Lua: Lua cheia<br><img src="imagens/lua_cheia.jpg" height="150px" width="150px">`;
+            } 
+            
+            else if (dia >= 17 && dia <= 22) {
+                frase += `Fase da Lua: Lua minguante<br><img src="imagens/lua_minguante.jpg" height="150px" width="150px">`;
+            } 
+            
+            else if (dia >= 23 && dia <= 31) {
+                frase += `Fase da Lua: Lua crescente<br><img src="imagens/lua_crescente.jpg" height="150px" width="150px">`;
+            }
+
+            resultado.innerHTML = frase;
+        }
+    </script>
+</body>
+</html>

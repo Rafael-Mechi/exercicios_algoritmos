@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par ou Ímpar</title>
+</head>
+<body>
+    <button onclick="sortearNumero()">Sortear número</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        var pares = 0;
+        var impares = 0;
+
+        function sortearNumero() {
+            var min = -30;
+            var max = -9;
+            var aux = Math.random();
+            var numero = (aux * (max - min) + min).toFixed();
+
+            var frase = `Número sorteado: ${numero}<br>`;
+
+            if (numero % 2 === 0) {
+                pares++;
+            } 
+            
+            else {
+                impares++;
+            }
+
+            frase += `Números pares: ${pares}<br>Números ímpares: ${impares}`;
+
+            resultado.innerHTML = frase;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendente</title>
+</head>
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <button onclick="verificarMedia()">Verificar Média</button>
+    
+    <div id="div_nota"></div>
+    <div id="div_media"></div>
+</body>
+<script>
+    let totalAvaliacoes = 0; // Soma de todas as avaliações
+    let qtdAvaliacoes = 0; // Contador de avaliações realizadas
+
+    function avaliar() {
+        var min = 0;
+        var max = 5;
+        var aux = Math.random();
+        var valor = (aux * (max - min) + min).toFixed(1);
+
+        totalAvaliacoes += Number(valor);
+        qtdAvaliacoes++;
+
+        if (valor >= 0 && valor <= 0.5) {
+            div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/muito triste.jpg" alt="Muito Triste" height="200px" width="200px">`;
+        } 
+
+        else if (valor > 0.5 && valor <= 1.5) {
+            div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/triste.jpg" alt="Triste" height="200px" width="200px">`;
+        } 
+
+        else if (valor > 1.5 && valor <= 3.5) {
+            div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/neutro.png" alt="Neutro" height="200px" width="200px">`;
+        } 
+        
+        else if (valor > 3.5 && valor <= 4.5) {
+            div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/feliz.png" alt="Feliz" height="200px" width="200px">`;
+        } 
+        
+        else {
+            div_nota.innerHTML = `Nota recebida: ${valor} <br> <img src="imagens/muito feliz.png" alt="Muito Feliz" height="200px" width="200px">`;
+        }
+    }
+
+    function verificarMedia() {
+
+        var media = (totalAvaliacoes / qtdAvaliacoes).toFixed(1);
+
+        if (media >= 0 && media <= 0.5) {
+            div_media.innerHTML = `Média geral: ${media} <br> <img src="imagens/muito_triste.jpg" alt="Muito Triste" height="200px" width="200px">`;
+        }
+        
+        else if (media > 0.5 && media <= 1.5) {
+            div_media.innerHTML = `Média geral: ${media} <br> <img src="imagens/triste.jpg" alt="Triste" height="200px" width="200px">`;
+        }
+        
+        else if (media > 1.5 && media <= 3.5) {
+            div_media.innerHTML = `Média geral: ${media} <br> <img src="imagens/neutro.png" height="200px" width="200px">`;
+        } 
+        
+        else if (media > 3.5 && media <= 4.5) {
+            div_media.innerHTML = `Média geral: ${media} <br> <img src="imagens/feliz.png" alt="Feliz" height="200px" width="200px">`;
+        } 
+        
+        else {
+            div_media.innerHTML = `Média geral: ${media} <br> <img src="imagens/muito_feliz.png" alt="Muito Feliz" height="200px" width="200px">`;
+        }
+    }
+</script>
+</html>

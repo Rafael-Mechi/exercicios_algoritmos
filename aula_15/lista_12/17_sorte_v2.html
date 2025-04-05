@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorte 2</title>
+</head>
+<body>
+    <label for="ipt_nome">Insira seu nome</label>
+    <input type="text" id="ipt_nome">
+
+    <label for="ipt_numero1">Insira seu primeiro número da sorte</label>
+    <input type="number" id="ipt_numero1">
+
+    <label for="ipt_numero2">Insira seu segundo número da sorte</label>
+    <input type="number" id="ipt_numero2">
+
+    <label for="ipt_numero3">Insira seu terceiro número da sorte</label>
+    <input type="number" id="ipt_numero3">
+
+    <button onclick="sortear()">Sortear</button>
+
+    <div id="resposta"></div>
+</body>
+    <script>
+        var qtdSorteios = 1;
+        function sortear(){
+            var nome = ipt_nome.value;
+            var numero1 = Number(ipt_numero1.value);
+            var numero2 = Number(ipt_numero2.value);
+            var numero3 = Number(ipt_numero3.value);
+
+            if((numero1 < 1 || numero1 > 100) || (numero2 < 1 || numero2 > 100) || (numero3 < 1 || numero3 > 100)){
+                alert("Número inválido! Insira um número entre 1 e 10.");
+            }
+            else{
+                var min = 1;
+                var max = 100;
+                var aux = Math.random();
+                var sorteado = (aux * (max - min) + min).toFixed();
+
+                if(numero1 == sorteado || numero2 == sorteado || numero3 == sorteado){
+                    resposta.innerHTML = `Parabéns ${nome}, o número da sorte ${sorteado} foi sorteado após ${qtdSorteios} sorteios.`;
+                    qtdSorteios = 1;
+                }
+                else {
+                    resposta.innerHTML = `Que pena, você não conseguiu. Tente de novo.`;
+                    qtdSorteios++;
+                }
+            
+            }
+        }
+    </script>
+</html>
