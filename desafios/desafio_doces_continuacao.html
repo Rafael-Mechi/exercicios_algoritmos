@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+<!--Enzo & Rafael Mechi-->
+<style>
+    img {
+        height: 100px;
+        height: auto;
+    }
+</style>
+
+<body>
+
+    <div>
+        <label for="qtd_macaron">Digite quantos Macarrons serão vendidos:</label>
+        <input type="number" id="qtd_macaron"> <br>
+
+        <label for="qtd_brigadeiros">Digite quantos Brigadeiros Gourmets serão vendidos:</label>
+        <input type="number" id="qtd_brigadeiros"> <br>
+
+        <label for="qtd_cupcake">Digite quantos Cupcakes serão vendidos:</label>
+        <input type="number" id="qtd_cupcake"> <br>
+
+        <label for="qtd_cheesecake">Digite quantos Cheesecake serão vendidos:</label>
+        <input type="number" id="qtd_cheesecake"> <br>
+
+        <label for="ipt_valor_macaron">Digite o preço da unidade de Macarrons:</label>
+        <input type="text" id="ipt_valor_macaron"> <br>
+
+        <label for="ipt_valor_brigadeiros">Digite o preço da unidade de Brigadeiros Gourmets:</label>
+        <input type="text" id="ipt_valor_brigadeiros"> <br>
+
+        <label for="ipt_valor_cupcake">Digite o preço da unidade de Cupcakes:</label>
+        <input type="text" id="ipt_valor_cupcake"> <br>
+
+        <label for="ipt_valor_cheesecake">Digite o preço da unidade de Cheesecake:</label>
+        <input type="text" id="ipt_valor_cheesecake"> <br>
+
+        <label for="ipt_taxa">Insira a taxa</label>
+        <input type="number" id="ipt_taxa">
+
+        <button onclick="verificar()">Verificar Vendas</button>
+        <br><br><br>
+
+        <label for="ipt_qtdClientes">Quantos clientes você deseja simular?</label>
+        <input type="number" id="ipt_qtdClientes">
+
+        <div id="resultado"></div>
+        <div id="avaliacao"></div>
+        <button onclick="avaliar()">Simular clientes</button>
+    </div>
+</body>
+
+
+
+<script>
+
+    function verificar() {
+        var qtdMacaron =  Number(qtd_macaron.value)
+
+        var qtdBriga = Number(qtd_brigadeiros.value)
+
+        var qtdCupCake = Number(qtd_cupcake.value)
+
+        var qtdCheescake = Number(qtd_cheesecake.value)
+
+        var totalDoces = qtdMacaron + qtdBriga + qtdCupCake + qtdCheescake;
+
+        var valorCheescake = Number(ipt_valor_cheesecake.value)
+        var valorCupcake = Number(ipt_valor_cupcake.value)
+        var valorBriga = Number(ipt_valor_brigadeiros.value)
+        var valorMacaron = Number(ipt_valor_macaron.value)
+
+        var contMacaron = qtdMacaron;
+        var contBriga = qtdBriga;
+        var contCupcake = qtdCupCake;
+        var contCheescake = qtdCheescake;
+
+        var taxa = Number(ipt_taxa.value);
+        var total = Number((qtdBriga * valorBriga) + (qtdCheescake * valorCheescake) + (qtdMacaron * valorMacaron) + (qtdCupCake * valorCupcake));
+        var totalTaxa = Number((qtdBriga * valorBriga) + (qtdCheescake * valorCheescake) + (qtdMacaron * valorMacaron) + (qtdCupCake * valorCupcake) + (taxa/100 + total));
+
+        var macaronTaxa = valorMacaron + (taxa/100 * valorMacaron);
+        var brigadeiroTaxa = valorBriga + (taxa/100 * valorBriga);
+        var cupcakeTaxa = valorCupcake + (taxa/100 * valorCupcake);
+        var cheescakeTaxa = valorCheescake + (taxa/100 * valorCheescake);
+
+        if(qtdMacaron < 0 || valorMacaron < 0 || qtdBriga < 0 || valorBriga < 0 || qtdCupCake < 0 || valorCupcake < 0 || qtdCheescake < 0 || valorCheescake < 0){
+            alert("Inválido. Não pode haver valores negativos");
+        }
+        else{
+            for(var i = 1; i <= totalDoces; i++){
+
+            if(contMacaron > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <img height="100px" width="100px" src="https://delale.com.br/img-render/produtos/h/macaron_810d30afa867aa1b47db365570b465ed.jpg"> VALOR UNITÁRIO: R$${macaronTaxa.toFixed(2)}<br>`;
+            contMacaron--;
+            }
+
+            else if(contBriga > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <img height="100px" width="100px" src="https://static.barato.com.br/2024/0111/g_2326a65cca.jpg"> VALOR UNITÁRIO: R$${brigadeiroTaxa.toFixed(2)}<br>`;
+            contBriga--;
+            }
+
+            else if(contCupcake > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <img height="100px" width="100px" src="https://t3.ftcdn.net/jpg/06/22/53/86/360_F_622538689_8peXS9fJS2hM5LMtgr7YQWUU8IHskiDP.jpg"> VALOR UNITÁRIO: R$${cupcakeTaxa.toFixed(2)}<br>`;
+            contCupcake--;
+            }
+
+            else if(contCheescake > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <img height="100px" width="100px" src="https://guiadacozinha.com.br/wp-content/uploads/2019/10/cheesecake-de-morango-768x619.jpg"> VALOR UNITÁRIO: R$${cheescakeTaxa.toFixed(2)}<br>`;
+            contCheescake--;
+            }
+        }
+        resultado.innerHTML += `Com a quantidade de ${qtdMacaron} Macarons, ${qtdBriga} Brigadeiros, ${qtdCupCake} Cupcakes e ${qtdCheescake} Cheesecakes, a venda totalizará R$${totalTaxa.toFixed(2)}`;
+
+    }
+
+    }
+
+    function avaliar(){
+        var qtdClientes = Number(ipt_qtdClientes.value);
+        var inicio = 1;
+        var fim = 5;
+        var media = 0;
+
+        for(var i = 1; i <= qtdClientes; i++){
+            var aux = Math.random();
+            var nota = Number((aux * (fim - inicio) + inicio).toFixed());
+            media += nota;
+
+            avaliacao.innerHTML += `Avaliação do ${i}º cliente: ${nota}<br>`;
+        }
+        media = media / qtdClientes;
+
+        if(media >= 4){
+            avaliacao.innerHTML += `Média das avaliações: ${media} 😊`;
+        }
+        else{
+            avaliacao.innerHTML += `Média das avaliações: ${media} 😞`;
+
+        }
+
+    }
+
+</script>
+       
+
+</html>

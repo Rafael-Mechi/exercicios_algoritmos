@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Enzo & Rafael Mechi-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria gourmet</title>
+</head>
+<body>
+    <label for="qtd_macaron">Insira a quantidade de maracarons:</label>
+    <input type="number" id="qtd_macaron">
+
+    <label for="ipt_valor_macaron">Insira o valor dos maracarons por unidade:</label>
+    <input type="number" id="ipt_valor_macaron">
+
+    <br>
+
+    <label for="qtd_brigadeiros">Insira a quantidade de brigadeiros gourmet:</label>
+    <input type="number" id="qtd_brigadeiros">
+
+    <label for="ipt_valor_brigadeiros">Insira o valor dos brigadeiros gourmet por unidade:</label>
+    <input type="number" id="ipt_valor_brigadeiros">
+
+    <br>
+
+    <label for="qtd_cupcake">Insira a quantidade de cupcakes:</label>
+    <input type="number" id="qtd_cupcake">
+
+    <label for="ipt_valor_cupcake">Insira o valor dos cupcakes por unidade:</label>
+    <input type="number" id="ipt_valor_cupcake">
+
+    <br>
+
+    <label for="qtd_cheesecake">Insira a quantidade de cheesecake:</label>
+    <input type="number" id="qtd_cheesecake">
+
+    <label for="ipt_valor_cheesecake">Insira o valor de cheesecake por unidade:</label>
+    <input type="number" id="ipt_valor_cheesecake">
+
+    <button onclick="verificarVendas()">Verificar Vendas</button>
+
+    <div id="resultado"></div>
+
+</body>
+    <script>
+    function  verificarVendas(){
+    //Tentamos refazer, mas n deu tempo.
+        var extrato = "";
+        
+        var qtdMacaron =  Number(qtd_macaron.value)
+        var valorMacaron = Number(ipt_valor_macaron.value)
+
+        var qtdBriga = Number(qtd_brigadeiros.value)
+        var valorBriga = Number(ipt_valor_brigadeiros.value)
+
+        var qtdCupCake = Number(qtd_cupcake.value)
+        var valorCupcake = Number(ipt_valor_cupcake.value)
+
+        var qtdCheescake = Number(qtd_cheesecake.value)
+        var valorCheescake = Number(ipt_valor_cheesecake.value)
+
+        var totalDoces = qtdMacaron + qtdBriga + qtdCupCake + qtdCheescake;
+
+        var contMacaron = qtdMacaron;
+        var contBriga = qtdBriga;
+        var contCupcake = qtdCupCake;
+        var contCheescake = qtdCheescake;
+
+        if(qtdMacaron < 0 || valorMacaron < 0 || qtdBriga < 0 || valorBriga < 0 || qtdCupCake < 0 || valorCupcake < 0 || qtdCheescake < 0 || valorCheescake < 0){
+            alert("Inválido. Não pode haver valores negativos");
+        }
+        else{
+            for(var i = 1; i <= totalDoces; i++){
+
+            if(contMacaron > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <br> <img height="150px" width="150px" src="https://delale.com.br/img-render/produtos/h/macaron_810d30afa867aa1b47db365570b465ed.jpg"> VALOR UNITÁRIO: ${valorMacaron}`;
+            contMacaron--;
+            }
+
+            else if(contBriga > 0){
+            resultado.innerHTML += `NÚMERO DA VENDA: ${i} <br> <img height="150px" width="150px" src="https://static.barato.com.br/2024/0111/g_2326a65cca.jpg"> VALOR UNITÁRIO: ${valorBriga}`;
+            contMacaron--;
+            }
+        }
+
+    }
+}    
+    </script>
+</html>
