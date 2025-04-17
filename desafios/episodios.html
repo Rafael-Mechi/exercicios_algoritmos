@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio episódios</title>
+</head>
+
+<body>
+    <form>
+        <label>Episódio que deseja começar assistindo: </label>
+        <input type="number" id="ipt_episodio">
+
+        <br>
+
+        <label>Quantidade de tempo disponível:</label>
+        <input type="number" id="ipt_tempo">
+
+        <br>
+
+        <label>Unidade de tempo em:</label>
+
+        <select id="select_medida">
+            <option value="selecionar">Selecionar</option>
+            <option value="horas">Horas</option>
+            <option value="minutos">Minutos</option>
+        </select>
+
+        <br>
+
+        <label>Pular abertura?</label>
+
+        <select id="abertura">
+            <option value="selecionar">Selecionar</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <br>
+
+        <label>Pular encerramento?</label>
+        <select id="encerramento">
+            <option value="selecionar">Selecionar</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <br>
+
+        <button type="button" onclick="assistir()">Assistir episódios</button>
+    </form>
+    <div id="div_resultado"></div>
+    <div id="div_resultado2"></div>
+</body>
+<script>
+    function assistir() {
+        div_resultado.innerHTML = "";
+        div_resultado2.innerHTML = "";
+
+
+        let episodio = Number(ipt_episodio.value);
+        let tempo = Number(ipt_tempo.value);
+        let medida = select_medida.value;
+        let pularAbertura;
+        let pularEncerramento;
+
+
+        let tempoAbertura = 2;
+        let tempoEncerramento = 2;
+        let tempoEpisodio = 24;
+
+        if (episodio < 1 || episodio > 1100) {
+            alert("O número do episódio é inválido");
+            return;
+        }
+
+        if (medida == "horas") {
+            tempo *= 60;
+        } 
+        
+        if (abertura.value == "sim") {
+            pularAbertura = true;
+        } else {
+            pularAbertura = false;
+        }
+
+        if (encerramento.value == "sim") {
+            pularEncerramento = true;
+        } else {
+            pularEncerramento = false;
+        }
+
+        if (pularAbertura || pularEncerramento) {
+            tempoEpisodio = 22;
+
+        } else if (pularAbertura && pularEncerramento) {
+            tempoEpisodio = 20;
+        }
+
+        let episodiosAssistidos = tempo / tempoEpisodio;
+        let status;
+        let episodioAtual = episodio;
+
+        while (tempo > 0) {
+            let tempoAssistido = tempoEpisodio;
+
+            if (tempo < tempoEpisodio) {
+                tempoAssistido = tempo;
+            }
+
+            div_resultado.innerHTML += `<br>Episódio ${episodioAtual}<br>`;
+
+            for (i = 1; i <= tempoAssistido; i++) {
+                if (i <= tempoAbertura && !pularAbertura) {
+                    status = "Abertura";
+                }
+                else if (i > (tempoEpisodio - tempoEncerramento) && !pularEncerramento) {
+                    status = "Encerramento";
+                }
+                else {
+                    status = "Conteúdo principal";
+                }
+                div_resultado.innerHTML += `Minuto ${i}: assistindo o(a) ${status}<br>`;
+
+
+            }
+            tempo -= tempoEpisodio;
+            episodioAtual++;
+        }
+
+        div_resultado2.innerHTML = `Fim dos episódios!<br>Foram assistidos ${episodiosAssistidos} episódios`;
+    }
+</script>
+
+</html>
