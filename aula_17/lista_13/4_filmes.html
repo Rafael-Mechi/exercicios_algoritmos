@@ -11,7 +11,10 @@
 
     <button onclick="cadastrarFilme()">Cadastrar filme</button>
     <br>
-    <button onclick="verFavoritos()">Ver favoritos</button>
+    <button onclick="verFavoritos()">Ver Favoritos</button>
+    
+    <div id="total"></div>
+    <div id="div_resposta"></div>
 </body>
     <script>
         let listaFilmes = [];
@@ -21,12 +24,15 @@
 
             listaFilmes.push(filme);
             alert("Filme adicionado com sucesso!");
+
+            total.innerHTML = `Total: ${listaFilmes.length}`;
         }
 
         function verFavoritos(){
-            for(){
-                
+            for(let i = 0; i < listaFilmes.length; i++){
+                div_resposta.innerHTML += `${listaFilmes[i]}<br>`;
             }
+            div_resposta.innerHTML += `O filme que mais gosta é ${listaFilmes[0]}<br>O filme que menos gosta é ${listaFilmes[listaFilmes.length -1]}`;
         }
     </script>
 </html>

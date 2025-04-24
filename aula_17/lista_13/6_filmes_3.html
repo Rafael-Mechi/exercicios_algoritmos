@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes 3</title>
+</head>
+<body>
+    <label for="ipt_filme">Adicionar filme na lista de favoritos</label>
+    <input type="text" id="ipt_filme">
+
+    <button onclick="cadastrarFilme()">Cadastrar filme</button>
+
+    <div id="div_resultado"></div>
+</body>
+    <script>
+        let listaFilmes = [];
+
+        function cadastrarFilme(){
+            let filmeDigitado = ipt_filme.value;
+
+            listaFilmes.push(filmeDigitado);
+
+            div_resultado.innerHTML += `${filmeDigitado}<br>`
+        }
+
+    </script>
+</html>
