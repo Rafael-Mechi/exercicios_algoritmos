@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de vetor 2</title>
+</head>
+<body>
+    <input type="text" id="ipt_frutaNova" placeholder="Adicionar nova fruta">
+    <button onclick="adicionar()">Adicionar nova fruta</button>
+
+    <button onclick="verFrutas()">Ver frutas</button>
+    <div id="frase"></div>
+</body>
+    <script>
+        let frutas = ['Maçã', 'Uva', 'Melancia', 'Abacaxi', 'Kiwi'];
+        
+        function adicionar(){
+            let frutaDigitada = ipt_frutaNova.value;
+
+            frutas.push(frutaDigitada);
+            
+            alert('Fruta adicionada com sucesso!');
+        }
+
+        function verFrutas(){
+            // informações das frutas
+            let quantidadeFrutas = frutas.length;
+            frase.innerHTML += `Quantidade de frutas: ${quantidadeFrutas}<br>`;
+
+            let primeiraFruta = frutas[0];
+            frase.innerHTML += `Primeira fruta: ${frutas[0]}`;
+        }
+
+    </script>
+</html>

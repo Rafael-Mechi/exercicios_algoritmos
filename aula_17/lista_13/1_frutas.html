@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de vetor 3</title>
+</head>
+<body>
+    <input type="text" id="ipt_pesquisarFruta" placeholder="Pesquisar fruta">
+    <button onclick="verListaFrutas()">Pesquisar</button>
+    <br>
+
+    <div id="div_frase"></div>
+</body>
+    <script>
+        let frutas = ['Maçã', 'Uva', 'Melancia', 'Abacaxi', 'Kiwi'];
+
+        function verListaFrutas(){
+            let frutaDigitada = ipt_pesquisarFruta.value;
+            let resposta = `A fruta ${frutaDigitada} não existe na lista`;
+
+            for(let i = 0; i < frutas.length; i++){
+                if(frutas[i] == frutaDigitada){
+                    resposta = `A fruta ${frutaDigitada} existe na lista`;
+                }
+            }
+
+            div_frase.innerHTML = resposta;
+        }
+
+    </script>
+</html>

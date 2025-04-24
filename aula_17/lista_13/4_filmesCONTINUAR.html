@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filme</title>
+</head>
+<body>
+    <label for="ipt_filme">Adicionar filme na lista de favoritos</label>
+    <input type="text" id="ipt_filme">
+
+    <button onclick="cadastrarFilme()">Cadastrar filme</button>
+    <br>
+    <button onclick="verFavoritos()">Ver favoritos</button>
+</body>
+    <script>
+        let listaFilmes = [];
+
+        function cadastrarFilme(){
+            let filme = ipt_filme.value;
+
+            listaFilmes.push(filme);
+            alert("Filme adicionado com sucesso!");
+        }
+
+        function verFavoritos(){
+            for(){
+                
+            }
+        }
+    </script>
+</html>
