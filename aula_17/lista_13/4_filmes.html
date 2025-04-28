@@ -30,7 +30,7 @@
 
         function verFavoritos(){
             for(let i = 0; i < listaFilmes.length; i++){
-                div_resposta.innerHTML += `${listaFilmes[i]}<br>`;
+                div_resposta.innerHTML += `Filme ${i+1}: ${listaFilmes[i]}<br>`;
             }
             div_resposta.innerHTML += `O filme que mais gosta é ${listaFilmes[0]}<br>O filme que menos gosta é ${listaFilmes[listaFilmes.length -1]}`;
         }

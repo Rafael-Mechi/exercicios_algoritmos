@@ -27,7 +27,6 @@
             let bairro = ipt_bairro.value;
             if(bairro == ""){
                 alert("Você não pode adicionar um bairro vazio");
-                return;
             }
 
             listaBairros.push(bairro);
@@ -38,12 +37,18 @@
             let numero = Number(ipt_numero.value);
             let bairroRelembrado = listaBairros[numero -1];
 
-            if(numero > listaBairros.length){
-                alert(`Você ainda não morou num ${numero}º bairro!`);
-                return;
+            if(numero <= 0){
+                div_relembrado.innerHTML = "Número inválido";
             }
 
-            div_relembrado.innerHTML = bairroRelembrado;
+            else if(numero > listaBairros.length){
+                alert(`Você ainda não morou num ${numero}º bairro!`);
+            }
+
+            else{
+                div_relembrado.innerHTML = bairroRelembrado;
+            }
+
         }
     </script>
 </html>

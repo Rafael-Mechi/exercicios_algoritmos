@@ -15,13 +15,21 @@
 </body>
     <script>
         let listaFilmes = [];
+        let cont = 1;
 
         function cadastrarFilme(){
             let filmeDigitado = ipt_filme.value;
 
-            listaFilmes.push(filmeDigitado);
+            if(filmeDigitado != ""){
+                listaFilmes.push(filmeDigitado);
 
-            div_resultado.innerHTML += `${filmeDigitado}<br>`
+                div_resultado.innerHTML += `${cont}º filme: ${filmeDigitado}<br>`
+                cont ++;
+            }
+
+            else {
+                alert("Não pode inserir filmes vazios");
+            }
         }
 
     </script>
