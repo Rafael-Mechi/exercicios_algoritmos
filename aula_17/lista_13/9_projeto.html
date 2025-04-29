@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto</title>
+</head>
+
+<body>
+    <label for="ipt_projeto">Insira um projeto que você já fez</label>
+    <input type="text" id="ipt_projeto">
+
+    <button onclick="registrarProjeto()">Registrar projeto</button>
+    <button onclick="mostrarProjetos()">Mostrar Projetos</button>
+
+    <div id="div_resposta"></div>
+    <div id="div_lista"></div>
+</body>
+<script>
+    let listaProjetos = [];
+    let cont = 0;
+    let senioridade = "Júnior";
+
+    function registrarProjeto() {
+        let projeto = ipt_projeto.value;
+
+        if (projeto === "") {
+            alert("Não se pode colocar projetos vazios");
+        }
+
+        else {
+            listaProjetos.push(projeto);
+            cont++;
+            if (cont >= 5 && cont <= 12) {
+                senioridade = "Pleno";
+            }
+            else if (cont >= 13) {
+                senioridade = "Sênior";
+            }
+
+            div_resposta.innerHTML = `Você já fez ${cont} projetos. Por isso você é um profissional ${senioridade}<br>`;
+        }
+    }
+
+    function mostrarProjetos() {
+        div_lista.innerHTML = "";
+        for (let i = listaProjetos.length - 1; i >= 0; i--) {
+            div_lista.innerHTML += `${listaProjetos[i]}<br>`;
+        };
+    }
+</script>
+
+</html>

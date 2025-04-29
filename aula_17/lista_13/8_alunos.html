@@ -17,11 +17,19 @@
         let listaAlunos = [];
 
         function cadastrarAluno(){
+            div_resposta.innerHTML = "";
             let aluno = ipt_aluno.value;
 
+            if(aluno === ""){
+                alert("Não pode inserir valores vazios");
+            }
+            else{
             listaAlunos.push(aluno);
             
-            
+            for(let i = listaAlunos.length -1; i >= 0; i--){
+                div_resposta.innerHTML += `${listaAlunos[i]}<br>`;
+            }
+        }
         }
     </script>
 </html>

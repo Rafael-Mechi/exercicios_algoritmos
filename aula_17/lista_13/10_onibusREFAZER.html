@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="ipt_busao">Insira o nome da linha de ônibus</label>
+    <input type="text" id="ipt_busao">
+
+    <button onclick="gravarBusao()">Gravar busão</button>
+    <br>
+    <br>
+
+    <label for="ipt_linhaPesquisada">Buscar por uma linha</label>
+    <input type="text" id="ipt_linhaPesquisada">
+    <button onclick="pesquisarLinha()">Pesquisar linha</button>
+
+    <div id="div_lista"></div>
+    <div id="div_pesquisa"></div>
+</body>
+<script>
+    let listaBusao = [];
+
+    function gravarBusao() {
+        let busao = ipt_busao.value;
+
+        if (busao == "") {
+            alert("Não pode inserir linha vazia");
+        }
+        else {
+            listaBusao.push(busao);
+
+            div_lista.innerHTML = "";
+            
+            for (let i = listaBusao.length - 1; i >= 0; i--) {
+                div_lista.innerHTML += `${listaBusao[i]}<br>`;
+            };
+        }
+    }
+
+    function pesquisarLinha(){
+        let cont = 1;
+        let ordem = "";
+        let linhaPesquisada = ipt_linhaPesquisada.value;
+        
+        for(let i = 0; i < listaBusao.length; i++){
+            if(linhaPesquisada == listaBusao[i]){
+                Number(ordem += i+1);
+            }
+        }
+
+        div_pesquisa.innerHTML = `Você já pegou essa linha ${cont} vezes, nessa ordem: ${ordem}`
+    }
+</script>
+
+</html>
