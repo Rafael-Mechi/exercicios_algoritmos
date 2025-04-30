@@ -29,32 +29,41 @@
         let busao = ipt_busao.value;
 
         if (busao == "") {
-            alert("Não pode inserir linha vazia");
-        }
-        else {
+            alert("Você não pode inserir linhas vazias");
+        } else {
             listaBusao.push(busao);
 
             div_lista.innerHTML = "";
-            
+
             for (let i = listaBusao.length - 1; i >= 0; i--) {
                 div_lista.innerHTML += `${listaBusao[i]}<br>`;
-            };
+            }
         }
     }
 
-    function pesquisarLinha(){
-        let cont = 1;
+    function pesquisarLinha() {
+        let cont = 0;
         let ordem = "";
         let linhaPesquisada = ipt_linhaPesquisada.value;
-        
-        for(let i = 0; i < listaBusao.length; i++){
-            if(linhaPesquisada == listaBusao[i]){
-                Number(ordem += i+1);
+
+        for (let i = 0; i < listaBusao.length; i++) {
+            if (linhaPesquisada == listaBusao[i]) {
+                cont++;
+                if (ordem == "") {
+                    ordem = (i + 1);
+                } else {
+                    ordem += ", " + (i + 1);
+                }
             }
         }
 
-        div_pesquisa.innerHTML = `Você já pegou essa linha ${cont} vezes, nessa ordem: ${ordem}`
+        if (cont == 0) {
+            div_pesquisa.innerHTML = `Você nunca pegou essa linha`;
+        } else {
+            div_pesquisa.innerHTML = `Você já pegou essa linha ${cont} vezes, nessa ordem: ${ordem}`;
+        }
     }
 </script>
+
 
 </html>

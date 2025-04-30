@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_nome_filho">Insira o nome de um de seus filhos</label>
+    <input type="text" id="ipt_nome_filho">
+
+    <button onclick="cadastrarFilho()">Cadastrar</button>
+
+    <br>
+
+    <button onclick="atualizarFilhos()">Atualizar filhos</button>
+
+    <div id="div_resposta"></div>
+</body>
+        <script>
+            let listaFilhos = [];
+            
+            let qtdFilhos = 0;
+
+            function cadastrarFilho(){
+                let nomeFilho = ipt_nome_filho.value;
+                let filhoRepetido = false;
+
+                if(nomeFilho == ""){
+                    alert("Você não pode registrar um filho sem nome");
+                    return;
+                }
+
+                else{
+
+                for(let i = 0; i < listaFilhos.length; i++){
+                    if(listaFilhos[i] == nomeFilho){
+                        filhoRepetido = true;
+                        alert("Você não pode cadastrar filhos com nomes repetidos");
+                        break;
+                    }
+                }
+
+            }
+
+                if(!filhoRepetido){
+                    listaFilhos.push(nomeFilho);
+                    qtdFilhos ++;
+                    alert("Filho cadastrado com sucesso!")
+                }
+
+            }
+
+            function atualizarFilhos(){
+                let custoEscolaParticular = qtdFilhos * 3000;
+                let custoEscolaPublica = qtdFilhos * 1500;
+
+                div_resposta.innerHTML = `Você tem ${qtdFilhos}<br><br>Seu custo mensal será aproximadamente R$${custoEscolaParticular} se colocá-los em escola particular ou R$${custoEscolaPublica} se eles estudarem em escola pública`;
+            }
+        </script>
+</html>

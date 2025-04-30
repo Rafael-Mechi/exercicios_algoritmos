@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_produto">Insira o nome do produto</label>
+    <input type="text" id="ipt_produto">
+
+    <label for="ipt_precoCompra">Insira o preço desse produto</label>
+    <input type="number" id="ipt_precoCompra">
+
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <br>
+
+    <button onclick="verRelatorio()">Relatório de estoque</button>
+
+    <div id="div_resultado"></div>
+
+</body>
+    <script>
+        let listaProdutos = [];
+        let listaPreco = [];
+        let precoCompra = 0;
+        qtdProduto = 0;
+
+        function cadastrar(){
+            let produto = ipt_produto.value;
+            let precoDigitado = Number(ipt_precoCompra.value);
+            precoCompra = precoDigitado;
+            
+            if(produto == "" || precoCompra < 0){
+                alert("Insira os dados adequadamente");
+            }
+
+            else{
+                listaProdutos.push(produto);
+                listaPreco.push(precoCompra);
+            
+                qtdProduto ++;
+
+                alert("Produto cadastrato com sucesso!");
+            }
+        }
+
+        function verRelatorio(){
+            if(listaPreco.length < 1 || listaProdutos.length < 1){
+                alert("Lista vazio");
+            }
+
+            else{
+                div_resultado.innerHTML = `Total de produtos: ${qtdProduto}<br><br>`;
+
+                for(let i = 0; i < listaProdutos.length; i++){
+                    let precoVenda = (listaPreco[i] + (listaPreco[i] * 0.25));
+                    div_resultado.innerHTML += `Produto ${i+1}: ${listaProdutos[i]}<br>Preço compra: R$${listaPreco[i]}. Vender por R$${precoVenda}<br><br>`;
+
+            }
+            
+        }
+
+    }
+    </script>
+</html>

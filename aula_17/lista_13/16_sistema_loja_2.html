@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_produto">Insira o nome do produto</label>
+    <input type="text" id="ipt_produto">
+
+    <label for="ipt_precoCompra">Insira o preço desse produto</label>
+    <input type="number" id="ipt_precoCompra">
+
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <br>
+
+    <button onclick="verRelatorio()">Relatório de estoque</button>
+
+    <div id="div_resultado"></div>
+
+</body>
+<script>
+    let listaProdutos = [];
+    let listaPreco = [];
+    let precoCompra = 0;
+    let qtdProduto = 0;
+
+    let produtoMaisCaro = 0;
+    let produtoMaisBarato = 0;
+    let somaProdutos = 0;
+    let cont = 0;
+    let mediaVendas = 0;
+
+    function cadastrar(){
+        let produto = ipt_produto.value;
+        let precoDigitado = Number(ipt_precoCompra.value);
+        precoCompra = precoDigitado;
+        
+        if(produto == "" || precoCompra < 0){
+            alert("Insira os dados adequadamente");
+        }
+
+        else{
+            listaProdutos.push(produto);
+            listaPreco.push(precoCompra);
+        
+            qtdProduto++;
+            somaProdutos += precoDigitado;
+
+            alert("Produto cadastrato com sucesso!");
+        }
+    }
+
+    function verRelatorio(){
+        if(listaPreco.length < 1 || listaProdutos.length < 1){
+            alert("Lista vazio");
+        }
+
+        else{
+            produtoMaisCaro = listaPreco[0];
+            produtoMaisBarato = listaPreco[0];
+            let nomeMaisCaro = listaProdutos[0];
+            let nomeMaisBarato = listaProdutos[0];
+
+            let somaVendas = 0;
+
+            div_resultado.innerHTML = `Total de produtos: ${qtdProduto}<br><br>`;
+
+            for(let i = 0; i < listaProdutos.length; i++){
+                let precoVenda = listaPreco[i] + (listaPreco[i] * 0.25);
+                somaVendas += precoVenda;
+
+                div_resultado.innerHTML += `Produto ${i+1}: ${listaProdutos[i]}<br>Preço compra: R$${listaPreco[i].toFixed(2)}. Vender por R$${precoVenda.toFixed(2)}<br><br>`;
+
+                if(listaPreco[i] > produtoMaisCaro){
+                    produtoMaisCaro = listaPreco[i];
+                    nomeMaisCaro = listaProdutos[i];
+                }   
+
+                if(listaPreco[i] < produtoMaisBarato){
+                    produtoMaisBarato = listaPreco[i];
+                    nomeMaisBarato = listaProdutos[i];
+                }
+            }
+
+            mediaVendas = somaVendas / listaProdutos.length;
+
+            div_resultado.innerHTML += `<br>Produto mais caro: ${nomeMaisCaro}<br>`;
+            div_resultado.innerHTML += `Produto mais barato: ${nomeMaisBarato}<br>`;
+            div_resultado.innerHTML += `Soma dos preços de compra dos produtos: R$${somaProdutos.toFixed(2)}<br>`;
+            div_resultado.innerHTML += `A média de preço de venda dos produtos: R$${mediaVendas.toFixed(2)}`;
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="ipt_numero">Digite um número qualquer</label>
+    <input type="number" id="ipt_numero">
+
+    <br>
+
+    <button onclick="analisarHistorico()">Analisar histórico</button>
+
+    <div id="div_resposta"></div>
+</body>
+<script>
+    let listaNumeros = [];
+
+    function analisarHistorico() {
+        let numero = Number(ipt_numero.value);
+
+        if (numero == "") {
+            alert("Você não pode inserir valores vazios");
+        } else {
+            listaNumeros.push(numero);
+
+            let maiorNumero = listaNumeros[0];
+            let menorNumero = listaNumeros[0];
+
+            let mensagem = "";
+
+            for (let i = 0; i < listaNumeros.length; i++) {
+                if (listaNumeros[i] > maiorNumero) {
+                    maiorNumero = listaNumeros[i];
+                }
+
+                if (listaNumeros[i] < maiorNumero) {
+                    menorNumero = listaNumeros[i];
+                }
+
+                mensagem += `${i + 1}º Número: ${listaNumeros[i]}<br>`;
+            }
+
+            mensagem += `<br>Maior: ${maiorNumero}<br>Menor: ${menorNumero}<br>`;
+            div_resposta.innerHTML = mensagem;
+        }
+    }
+</script>
+
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Campanha do Time</title>
+</head>
+
+<body>
+    <h3>Indique o resultado</h3>
+    <select id="select_resultado">
+        <option value="vitória">Vitória</option>
+        <option value="empate">Empate</option>
+        <option value="derrota">Derrota</option>
+    </select>
+    <br>
+    <button onclick="registrarJogo()">Registrar jogo</button>
+
+    <div id="div_resultado"></div>
+
+    <br>
+
+    <label>Indique qual jogo deseja saber o resultado:</label>
+    <input type="number" id="ipt_jogo">
+
+    <button onclick="consultarJogo()">Consultar jogo</button>
+
+    <br>
+
+    <div id="div_jogos"></div>
+
+    <script>
+        let listaResultados = [];
+
+        function registrarJogo() {
+            let resultadoSelecionado = select_resultado.value;
+            listaResultados.push(resultadoSelecionado);
+
+            let vitorias = 0;
+            let empates = 0;
+            let derrotas = 0;
+
+            for (let i = 0; i < listaResultados.length; i++) {
+                if (listaResultados[i] == "vitória") {
+                    vitorias++;
+                } 
+                
+                else if (listaResultados[i] == "empate") {
+                    empates++;
+                } 
+                
+                else {
+                    derrotas++;
+                }
+            }
+
+            let totalPontos = (vitorias * 3) + (empates * 1);
+            let pontosPossiveis = listaResultados.length * 3;
+            let aproveitamento = (totalPontos / pontosPossiveis) * 100;
+
+            div_resultado.innerHTML =
+                `O time teve: ${vitorias} vitórias, ${empates} empates, ${derrotas} derrotas<br> Pontuação total: ${totalPontos} pontos<br> Aproveitamento: ${aproveitamento.toFixed(1)}%`;
+        }
+
+        function consultarJogo() {
+            let numero = Number(ipt_jogo.value);
+            let resultado = listaResultados[numero - 1];
+
+            for(let i = 0; i < listaResultados.length; i++){
+                if (numero >= 1 && numero <= listaResultados.length) {
+                let resultado = listaResultados[numero - 1];
+
+                if (resultado == "vitória") {
+                    div_jogos.innerHTML = `No ${numero}º jogo, o time Ganhou`;
+                    break;
+                } 
+                
+                else if (resultado == "empate") {
+                    div_jogos.innerHTML = `No ${numero}º jogo, o time Empatou`;
+                    break;
+                } 
+                
+                else {
+                    div_jogos.innerHTML = `No ${numero}º jogo, o time Perdeu`;
+                    break;
+                }
+            } 
+            
+            else {
+                div_jogos.innerHTML = `Não foi cadastrado um ${numero}º jogo`;
+                break;
+            }
+        }
+
+            
+        }
+    </script>
+</body>
+
+</html>
