@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de estoque</title>
+</head>
+
+<body>
+    <label for="ipt_codigo_produto">Insira o código do produto</label>
+    <input type="text" id="ipt_codigo_produto">
+
+    <label for="ipt_nome_produto">Insira o nome do produto</label>
+    <input type="text" id="ipt_nome_produto">
+
+    <label for="ipt_qtd_produto">Insira a quantidade de produto</label>
+    <input type="number" id="ipt_qtd_produto">
+
+    <br>
+    <button onclick="cadastrar()">Cadastrar produto</button>
+    <br>
+    <button onclick="repor()">Repor produto</button>
+    <br>
+    <button onclick="vender()">Vender produto</button>
+    <br><br>
+
+    <button onclick="verRelatorio()">Ver relatório</button>
+
+    <div id="div_relatorio_rep_venda"></div>
+    <div id="div_relatorio"></div>
+
+</body>
+<script>
+    let listaCodigos = [];
+    let listaProdutos = [];
+    let listaQuantidade = [];
+    let listaVendas = [];
+
+    let codigoProduto = 0;
+    let nomeProduto = 0;
+    let qtdProduto = 0;
+
+    let estoque = 0;
+    let totalProdutos = 0;
+
+    let status = "";
+
+    function cadastrar() {
+        codigoProduto = ipt_codigo_produto.value;
+        nomeProduto = ipt_nome_produto.value;
+        qtdProduto = Number(ipt_qtd_produto.value);
+
+        if (codigoProduto == "" || nomeProduto == "" || qtdProduto < 10) {
+            alert("Preecnha todos os campos corretamente. Possíveis cauas: valores vazios ou quantidade menor que 10");
+        }
+
+        else {
+            for (let i = 0; i < listaProdutos.length; i++) {
+                if (codigoProduto == listaCodigos[i]) {
+                    alert("Este código já existe");
+                    return;
+                }
+            }
+            listaCodigos.push(codigoProduto);
+            listaProdutos.push(nomeProduto);
+            listaQuantidade.push(qtdProduto);
+            listaVendas.push(0);
+
+            alert(`Produto ${nomeProduto} registrado com sucesso`);
+            estoque += qtdProduto;
+            totalProdutos += qtdProduto;
+        }
+    }
+
+    function repor() {
+        let codigoProduto = ipt_codigo_produto.value;
+        let nomeProduto = ipt_nome_produto.value;
+        let qtdProduto = Number(ipt_qtd_produto.value);
+
+        let produtoEncontrado = false;
+
+        if (codigoProduto == "" || nomeProduto == "" || qtdProduto <= 0) {
+            if (qtdProduto <= 0) {
+                alert("Quantidade inválida");
+                return;
+            }
+            alert("Preecnha todos os campos corretamente");
+        }
+
+        else {
+            for (let i = 0; i < listaProdutos.length; i++) {
+                if (listaProdutos[i] == nomeProduto && listaCodigos[i] == codigoProduto) {
+                    listaQuantidade[i] += qtdProduto;
+                    estoque = listaQuantidade[i];
+                    produtoEncontrado = true;
+
+                    alert(`${qtdProduto}x do ${nomeProduto} foi reposto com sucesso`);
+                    totalProdutos += qtdProduto;
+                }
+            }
+
+            if (!produtoEncontrado) {
+                alert("Produto não identificado");
+                return;
+            }
+
+            if (qtdProduto < 10) {
+                status = "(Precisa Repor)";
+            }
+
+            else {
+                status = "(OK)";
+            }
+
+            div_relatorio_rep_venda.innerHTML = `<br>Código: ${codigoProduto} | Produto: ${nomeProduto} | Quantidade em Estoque: ${estoque}. ${status}<br><br>`;
+            return;
+        }
+    }
+
+    function vender() {
+        let codigoProduto = ipt_codigo_produto.value;
+        let nomeProduto = ipt_nome_produto.value;
+        let qtdProduto = Number(ipt_qtd_produto.value);
+
+        let produtoEncontrado = false;
+
+        if (codigoProduto == "" || nomeProduto == "" || qtdProduto <= 0) {
+            if (qtdProduto <= 0) {
+                alert("Quantidade inválida");
+                return;
+            }
+            alert("Preecnha todos os campos corretamente");
+        }
+
+        else {
+            for (let i = 0; i < listaProdutos.length; i++) {
+                if (listaProdutos[i] == nomeProduto && listaCodigos[i] == codigoProduto) {
+                    produtoEncontrado = true;
+
+                    if (qtdProduto > listaQuantidade[i]) {
+                        alert(`Você não tem a quantidade de ${listaProdutos[i]} suficiente para vender.`);
+                        return;
+                    }
+                    else {
+                        listaQuantidade[i] -= qtdProduto;
+                        listaVendas[i] += qtdProduto;
+
+                        if (listaQuantidade[i] < 10) {
+                            status = "(Precisa Repor)";
+                        }
+
+                        else {
+                            status = "(OK)";
+                        }
+                    }
+                }
+            }
+
+            if (produtoEncontrado) {
+                alert(`${qtdProduto}x do ${nomeProduto} vendido(s)!`);
+                estoque -= qtdProduto;
+                totalProdutos -= qtdProduto;
+
+                div_relatorio_rep_venda.innerHTML = `<br>Código: ${codigoProduto} | Produto: ${nomeProduto} | Quantidade em Estoque: ${estoque}. ${status}<br><br>`;
+            }
+
+            else {
+                alert("Produto não identificado");
+                return;
+            }
+
+        }
+    }
+
+
+    function verRelatorio() {
+        div_relatorio.innerHTML = "";
+        let qtdProdutoMaiorQuantidade = listaQuantidade[0];
+        let qtdProdutoMenorQuantidade = listaQuantidade[0];
+
+        let produtoMaiorQuantidade = listaProdutos[0];
+        let produtoMenorQuantidade = listaProdutos[0];
+
+        let produtoMaisVendido = listaProdutos[0];
+        let qtdMaisVendida = listaVendas[0];
+
+        let produtoMenosVendido = listaProdutos[0];
+        let qtdMenosVendida = listaVendas[0];
+
+        if (listaProdutos.length === 0) {
+            div_relatorio.innerHTML = "Você não tem nenhum produto cadastrado";
+            return;
+        }
+
+
+        for (let i = 0; i < listaProdutos.length; i++) {
+            if (qtdProdutoMaiorQuantidade < listaQuantidade[i]) {
+                qtdProdutoMaiorQuantidade = listaQuantidade[i];
+                produtoMaiorQuantidade = listaProdutos[i];
+            }
+
+            if (qtdProdutoMenorQuantidade > listaQuantidade[i]) {
+                qtdProdutoMenorQuantidade = listaQuantidade[i];
+                produtoMenorQuantidade = listaProdutos[i];
+            }
+
+            if (listaVendas[i] > qtdMaisVendida) {
+                qtdMaisVendida = listaVendas[i];
+                produtoMaisVendido = listaProdutos[i];
+            }
+
+            if (listaVendas[i] < qtdMenosVendida) {
+                qtdMenosVendida = listaVendas[i];
+                produtoMenosVendido = listaProdutos[i];
+            }
+
+            if (listaQuantidade[i] < 10) {
+                status = "(Precisa Repor)";
+            }
+            else {
+                status = "(OK)"
+            }
+
+            div_relatorio.innerHTML += `Registro ${(i + 1)} - Código: ${listaCodigos[i]} | Produto: ${listaProdutos[i]} | Quantidade em Estoque: ${listaQuantidade[i]}: ${status}<br>`;
+        }
+
+
+
+        div_relatorio.innerHTML += `<br>Seu estoque tem ${totalProdutos} produtos registrados<br><br><br>Produto com a maior quantidade em estoque:
+            ${produtoMaiorQuantidade} (${qtdProdutoMaiorQuantidade} unidades)<br>
+            Produto com menor quantidade em estoque:
+            ${produtoMenorQuantidade} (${qtdProdutoMenorQuantidade} unidades)
+            <br><br>Produto mais vendido: ${produtoMaisVendido} (${qtdMaisVendida} unidade(s) vendidas)<br>
+            Produto menos vendido: ${produtoMenosVendido} (${qtdMenosVendida} unidade(s) vendidas)`
+    }
+</script>
+
+</html>
