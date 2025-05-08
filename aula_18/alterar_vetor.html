@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar vetor</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        let nomes = ['Bob', 'Maria', 'Gil', 'Meki'];
+
+        console.log(`VETOR ANTES DE ALTERAR: ${nomes}`);
+
+        let nomeAlterar = 'Bob';
+        let nomeNovo = 'Teste';
+
+        for(let i = 0; i < nomes.length; i++){
+            if(nomes[i] == nomeAlterar){
+                nomes[i] = nomeNovo;
+            }
+        }
+
+        console.log(`VETOR DEPOIS DE ALTERAR: ${nomes}`);
+        
+        
+        
+    </script>
+</html>

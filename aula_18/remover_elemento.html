@@ -1,0 +1,16 @@
+<script>
+    let nomes = ['Bob', 'Maria', 'Gil', 'Meki'];
+
+
+    // a partir de Gil, ele vai removendo os elementos à direita.
+    // Como está como 1, removerá só 1 elemento (Gil)
+    //slice(índice, quantidade à direita);
+    nomes.slice(2, 1);
+    
+    //forma de achar um elemento e remover a partir dele
+    for(let i = 0; i < nomes.length; i++){
+        if(nomes[i] == 'Bob'){
+            nomes.slice(i, 1);
+        }
+    }
+</script>

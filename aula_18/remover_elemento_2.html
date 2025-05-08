@@ -1,0 +1,13 @@
+<script>
+    let nomes = ['Bob', 'Maria', 'Gil', 'Meki', 'Bob', 'Thiago'];
+
+
+    nomes.slice(2, 1);
+    
+    //remove os bobs
+    for(let i = 0; i < nomes.length; i++){
+        if(nomes[i] == 'Bob'){
+            nomes.splice(i, 1);
+        }
+    }
+</script>

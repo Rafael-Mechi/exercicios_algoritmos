@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece 2</title>
+</head>
+<body>
+    <label for="ipt_comida">Insira a comida a ser cadastrada</label>
+    <input type="text" id="ipt_comida" placeholder="Cadastrar Estoque de Comidas">
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <br><br>
+
+    <button onclick="verificarQuantidade()">Verificar quantidade</button>
+
+    <br><br>
+
+    <label for="ipt_pesquisa">Digite uma comida para pesquisar</label>
+    <button onclick="pesquisar()">Pesquisar comida</button>
+
+    <br><br>
+
+    <button onclick="exibirEstoque()">Exibir estoque</button>
+
+    <div id="resultado"></div>
+</body>
+    <script>
+        let listaComidas = [];
+
+        let totalComida = Number(0);
+
+        function cadastrar(){
+            let comidaDigtada = ipt_comida.value;
+
+            if(comidaDigitada = ""){
+                alert("Erro: nome vazio");
+            }
+
+            else{
+                listaComidas.push(comidaDigtada);
+
+                alert("Comida cadastrada com sucesso!");
+            }
+        }
+
+        function verificarQuantidade(){
+            let mensagem = "Desse jeito, o Luffy devora até o navio";
+
+            if(listaComidas.length >= 3 && listaComidas.length <= 7){
+                mensagem = "O comilão do Luffy não vai deixar sobrar nenhuma comida";
+            }
+
+            else if(listaComidas.length > 7 && listaComidas.length <= 10){
+                mensagem = "Assim, talvez sobre um pouco para a tripulação";
+            }
+
+            else if(listaComidas.length > 10){
+                mensagem = "Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!";
+            }
+
+            resultado.innerHTML = mensagem;
+            
+        }
+
+        function pesquisar(){
+            let comidaDigitadaPesquisa;
+            let vezesQApareceu = 0;
+            let mensagem = "";
+            let encontrou = false;
+
+            for(let i = 0; i < listaComidas.length; i++){
+                if(listaComidas[i] == comidaDigitadaPesquisa){
+                    econtrou = true;
+                    vezesQApareceu ++;
+                    mensagem = `Temos a comida ${comidaDigitadaPesquisa} e há ${vezesQApareceu} unidade(s) dela`;
+                }
+            }
+
+            if(!encontrou){
+                mensagem = `Alguém vai ter que comprar ${comidaDigitadaPesquisa}, tá fazendo falta...`;
+            }
+
+            resultado.innerHTML = mensagem;
+        }
+
+        function exibirEstoque(){
+            let soma = 0;
+            let comidaAtual = listaComidas[0];
+            let listaNovaComidas = [];
+            let qtdListaNovaComida = [];
+
+            //mantém a verificação. Push na comida -1. Nova comida = comida(i)
+
+            for(let i = 0; i < listaComidas.length; i++){
+                if(comidaAtual == listaComidas[i]){
+                    soma += 1;
+                }
+                else{
+                    listaNovaComidas.push(comidaAtual);
+                    qtdListaNovaComida.push(soma);
+
+                    soma = 0;
+                }
+
+            }
+
+            for(let i = 0; i < listaNovaComidas.length; i++){
+                resultado.innerHTML += `${listaNovaComidas[i]} - ${qtdListaNovaComida[i]} unidades <br>`;
+            }
+
+        }
+    </script>
+</html>
