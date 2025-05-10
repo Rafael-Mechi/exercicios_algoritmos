@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Piece 2</title>
 </head>
+
 <body>
-    <label for="ipt_comida">Insira a comida a ser cadastrada</label>
+    <label for="ipt_comida">Insira a comida</label>
     <input type="text" id="ipt_comida" placeholder="Cadastrar Estoque de Comidas">
 
     <button onclick="cadastrar()">Cadastrar</button>
@@ -17,99 +19,185 @@
 
     <br><br>
 
-    <label for="ipt_pesquisa">Digite uma comida para pesquisar</label>
     <button onclick="pesquisar()">Pesquisar comida</button>
 
     <br><br>
 
     <button onclick="exibirEstoque()">Exibir estoque</button>
 
+    <br><br>
+
+    <label>Nome comida atual:</label>
+    <input type="text" id="ipt_nome_comida_atual">
+
+    <br>
+
+    <label>Novo nome:</label>
+    <input type="text" id="ipt_comida_novo_nome">
+    <br>
+
+    <button onclick="alterarNome()">Alterar Nome</button>
+
+    <br><br>
+
+    <label>Remover comida:</label>
+    <input type="text" id="ipt_remover_comida" placeholder="Ex: Banana">
+    <br>
+    <button onclick="removerComida()">Remover Comida</button>
+
+
     <div id="resultado"></div>
 </body>
-    <script>
-        let listaComidas = [];
+<script>
+    let listaComidas = [];
 
-        let totalComida = Number(0);
+    let totalComida = Number(0);
 
-        function cadastrar(){
-            let comidaDigtada = ipt_comida.value;
+    function cadastrar() {
+        let comidaDigtada = ipt_comida.value;
 
-            if(comidaDigitada = ""){
-                alert("Erro: nome vazio");
-            }
+        if (comidaDigitada = "") {
+            alert("Erro: nome vazio");
+        }
 
-            else{
-                listaComidas.push(comidaDigtada);
+        else {
+            listaComidas.push(comidaDigtada);
 
-                alert("Comida cadastrada com sucesso!");
+            alert("Comida cadastrada com sucesso!");
+        }
+    }
+
+    function verificarQuantidade() {
+        let mensagem = "Desse jeito, o Luffy devora até o navio";
+
+        if (listaComidas.length >= 3 && listaComidas.length <= 7) {
+            mensagem = "O comilão do Luffy não vai deixar sobrar nenhuma comida";
+        }
+
+        else if (listaComidas.length > 7 && listaComidas.length <= 10) {
+            mensagem = "Assim, talvez sobre um pouco para a tripulação";
+        }
+
+        else if (listaComidas.length > 10) {
+            mensagem = "Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!";
+        }
+
+        resultado.innerHTML = mensagem;
+
+    }
+
+    function pesquisar() {
+        let comidaDigitadaPesquisa = ipt_comida.value;
+        let vezesQApareceu = 0;
+        let mensagem = "";
+        let encontrou = false;
+
+        if (comidaDigitadaPesquisa == "") {
+            alert("Erro: input vazio");
+            return;
+        }
+
+        for (let i = 0; i < listaComidas.length; i++) {
+            if (listaComidas[i] == comidaDigitadaPesquisa) {
+                encontrou = true;
+                vezesQApareceu++;
+                mensagem = `Temos a comida ${comidaDigitadaPesquisa} e há ${vezesQApareceu} unidade(s) dela`;
             }
         }
 
-        function verificarQuantidade(){
-            let mensagem = "Desse jeito, o Luffy devora até o navio";
+        if (!encontrou) {
+            mensagem = `Alguém vai ter que comprar ${comidaDigitadaPesquisa}, tá fazendo falta...`;
+        }
 
-            if(listaComidas.length >= 3 && listaComidas.length <= 7){
-                mensagem = "O comilão do Luffy não vai deixar sobrar nenhuma comida";
-            }
+        resultado.innerHTML = mensagem;
+    }
 
-            else if(listaComidas.length > 7 && listaComidas.length <= 10){
-                mensagem = "Assim, talvez sobre um pouco para a tripulação";
-            }
+    function exibirEstoque() {
+        let mensagem = "";
 
-            else if(listaComidas.length > 10){
-                mensagem = "Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!";
+        if (listaComidas.length == 0) {
+            alert("Não temos comida")
+        }
+
+        else {
+
+            for (let i = 0; i < listaComidas.length; i++) {
+                let comidaAtual = listaComidas[i];
+                let soma = 0;
+                let repetiu = false;
+
+                for (let k = 0; k < i; k++) {
+                    if (listaComidas[k] == comidaAtual) {
+                        repetiu = true;
+                    }
+                }
+
+                if (!repetiu) {
+                    for (let j = 0; j < listaComidas.length; j++) {
+                        if (listaComidas[j] == comidaAtual) {
+                            soma++;
+                        }
+                    }
+
+                    mensagem += `- ${comidaAtual} ${soma} unidade(s)<br>`;
+                }
             }
 
             resultado.innerHTML = mensagem;
-            
         }
 
-        function pesquisar(){
-            let comidaDigitadaPesquisa;
-            let vezesQApareceu = 0;
-            let mensagem = "";
-            let encontrou = false;
+    }
 
-            for(let i = 0; i < listaComidas.length; i++){
-                if(listaComidas[i] == comidaDigitadaPesquisa){
-                    econtrou = true;
-                    vezesQApareceu ++;
-                    mensagem = `Temos a comida ${comidaDigitadaPesquisa} e há ${vezesQApareceu} unidade(s) dela`;
-                }
-            }
+    function alterarNome() {
+        let nomeAntigo = ipt_nome_comida_atual.value;
+        let nomeNovo = ipt_comida_novo_nome.value;
 
-            if(!encontrou){
-                mensagem = `Alguém vai ter que comprar ${comidaDigitadaPesquisa}, tá fazendo falta...`;
-            }
-
-            resultado.innerHTML = mensagem;
+        if (nomeAntigo === "" || nomeNovo === "") {
+            alert("Erro: input vazio (nome antigo ou nome novo)");
+            return;
         }
 
-        function exibirEstoque(){
-            let soma = 0;
-            let comidaAtual = listaComidas[0];
-            let listaNovaComidas = [];
-            let qtdListaNovaComida = [];
+        let alterou = false;
 
-            //mantém a verificação. Push na comida -1. Nova comida = comida(i)
-
-            for(let i = 0; i < listaComidas.length; i++){
-                if(comidaAtual == listaComidas[i]){
-                    soma += 1;
-                }
-                else{
-                    listaNovaComidas.push(comidaAtual);
-                    qtdListaNovaComida.push(soma);
-
-                    soma = 0;
-                }
-
+        for (let i = 0; i < listaComidas.length; i++) {
+            if (listaComidas[i] == nomeAntigo) {
+                listaComidas[i] = nomeNovo;
+                alterou = true;
             }
-
-            for(let i = 0; i < listaNovaComidas.length; i++){
-                resultado.innerHTML += `${listaNovaComidas[i]} - ${qtdListaNovaComida[i]} unidades <br>`;
-            }
-
         }
-    </script>
+
+        if (alterou) {
+            resultado.innerHTML = `A comida '${nomeAntigo}' foi alterada para '${nomeNovo}'.`;
+        } else {
+            resultado.innerHTML = `A comida '${nomeAntigo}' não foi encontrada no estoque.`;
+        }
+    }
+
+    function removerComida() {
+        let removerComida = ipt_remover_comida.value;
+        let encontrou = false;
+
+        if (removerComida == "") {
+            alert("Erro: input vazio");
+            return;
+        }
+
+        for (let i = listaComidas.length - 1; i >= 0; i--) {
+            if (listaComidas[i] == removerComida) {
+                listaComidas.splice(i, 1);
+                encontrou = true;
+            }
+        }
+
+        if (encontrou) {
+            resultado.innerHTML = `A comida '${removerComida}' foi removida do estoque.`;
+        }
+
+        else {
+            resultado.innerHTML = `A comida '${removerComida}' não foi encontrada no estoque.`;
+        }
+    }
+
+</script>
+
 </html>
