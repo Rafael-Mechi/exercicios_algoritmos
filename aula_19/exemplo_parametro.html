@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo parâmetro</title>
+</head>
+<body>
+    <input type="text" id="ipt_n">
+    <br>
+
+    <button onclick="numeroSorte()">Esse é o número da sorte?</button>
+    <br>
+    <button onclick="analiseSaldo()">Analise meu saldo</button>
+
+    <div id="resultado"></div>
+</body>
+    <script>
+
+        function validaNumero(numero){
+            if(numero < 0){
+                resultado.innerHTML += `O número está negativo. É isso mesmo?<br>`;
+            }
+        }
+
+        function numeroSorte(){
+            // o usuario n sabe, mas o nosso numero da sorte é 42
+
+            var numeroDigitado = ipt_n.value;
+
+            if(numeroDigitado < 0){
+                resultado.innerHTML = `O número está negativo. É isso mesmo?<br>`;
+            }
+
+            if(numeroDigitado == 42){
+                resultado.innerHTML += `Acertou! O número da sorte é ${numeroDigitado}`;
+            }
+
+            else{
+                resultado.innerHTML += `Errou! O número da sorte não é esse`;
+            }
+        }
+
+        function analiseSaldo(){
+            var numeroDigitado = ipt_n.value;
+
+            validaNumero(numeroDigitado);
+
+            if(numeroDigitado >= 1000){
+                resultado.innerHTML += `Esse saldo tá ok`;
+            }
+
+            else{
+                resultado.innerHTML += `Não está tão bom`;
+            }
+        }
+    </script>
+</html>

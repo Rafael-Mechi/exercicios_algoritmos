@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="ipt_idade">
+
+    <br>
+
+    <button onclick="podeBeber()">Já pode beber?</button>
+
+    <br>
+
+    <button onclick="podeSerPreso()">Já pode ser preso?</button>
+
+    <br>
+
+    <button onclick="podeSeAlistar()">Pode se alistar?</button>
+
+    <div id="resultado"></div>
+</body>
+<script>
+
+    function ehMaior(idade){
+        if(idade >= 18){
+            resultado.innerHTML = `É maior de idade <br>`;
+            return true;
+        }
+
+        else{
+            resultado.innerHTML = `É menor de idade <br>`;
+            return false;
+        }
+    }
+
+    function podeBeber() {
+        var idadeDigitada = Number(ipt_idade.value);
+
+        var retornoEhMaior = ehMaior(idadeDigitada);
+        console.log(`Retorno: ${retornoEhMaior}`);
+        
+        
+
+        if (idadeDigitada >= 18) {
+            resultado.innerHTML += `Já pode beber`;
+        }
+
+        else {
+            resultado.innerHTML += `Não pode beber`;
+        }
+    }
+
+    function podeSerPreso() {
+        var idadeDigitada = Number(ipt_idade.value);
+
+        if (idadeDigitada >= 18) {
+            resultado.innerHTML = `Já pode ser preso`;
+        }
+
+        else {
+            resultado.innerHTML = `Não pode ser preso`;
+        }
+    }
+
+    function podeSeAlistar() {
+        var idadeDigitada = Number(ipt_idade.value); 
+
+        if(ehMaior(idadeDigitada)){
+            resultado.innerHTML = `Pode se alistar`;
+        }
+
+        else {
+            resultado.innerHTML = `Não pode se alistar`;
+        }
+    }
+</script>
+
+</html>
