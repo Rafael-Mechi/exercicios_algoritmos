@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Alunos</title>
     <style>
         button {
             border: none;
@@ -44,67 +43,66 @@
             align-items: center;
         }
 
-        .container_alunos {
-            display: flex;
-            background-color: rgb(165, 164, 164);
-            flex-direction: column;
-            flex-wrap: wrap;
-  
+        .div_resultado {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
-            width: 100%;
-            height: 35vh;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: center;
+            padding: 20px;
+            background-color: rgb(160, 160, 160);
         }
 
-        .div_resultado{
-            display: grid;
-            grid-template-columns: 2fr 2fr;
-            grid-gap: 20px;
-            background-color: rgb(160, 160, 160);
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
     </style>
 </head>
-
 <body>
 
     <div class="container_input">
-
         <div class="div_input">
-            <input type="text" placeholder="RA">
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="Nota">
+            <input type="text" id="ipt_ra" placeholder="RA">
+            <input type="text" id="ipt_nome" placeholder="Nome">
+            <input type="text" id="ipt_nota" placeholder="Nota">
         </div>
         <button onclick="cadastrar()">Cadastrar e exibir</button>
-
     </div>
 
-    <div id="div_resultado"></div>
-</body>
-<script>
-    let alunos = [];
+    <div id="div_resultado" class="div_resultado"></div>
 
-    function cadastrar() {
-        let mensagem = '';
+    <script>
+        let alunos = [];
 
-        let aluno = {
-            ra: ipt_ra.value,
-            nome: ipt_nome.value,
-            nota: Number(ipt_nota.value)
-        };
+        function cadastrar() {
+            let aluno = {
+                ra: ipt_ra.value,
+                nome: ipt_nome.value,
+                nota: Number(ipt_nota.value)
+            };
 
-        alunos.push(aluno);
+            if(ipt_ra.value == "" || ipt_nome.value == "" || ipt_nota.value == ""){
+                alert("Preencha todos os campos");
+                return;
+            }
 
-        for(let i = 0; i < alunos.length; i++){
-            mensagem += `<div class="div_resultado">
-                            <p>${alunos[i].ra}</p>
-                            <p>${alunos[i].nome}</p>
-                            <p>${alunos[i].nota}</p>
-                        </div>`;
+            alunos.push(aluno);
 
+            div_resultado.innerHTML = '';
+
+            for (let i = 0; i < alunos.length; i++) {
+                div_resultado.innerHTML += `
+                    <div class="card">
+                        <p>RA: ${alunos[i].ra}</p>
+                        <p>Nome: ${alunos[i].nome}</p>
+                        <p>Nota: ${alunos[i].nota}</p>
+                    </div>`;
+            }
         }
-    }
-</script>
+    </script>
 
+</body>
 </html>

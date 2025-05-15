@@ -210,62 +210,65 @@
     }
 
 
+    vetorNumerosMedia = [];
 
     function calcularMedia() {
-        let numeros = Number(ipt_media.value);
 
-        if (numeros == null || numeros == undefined) {
-            div_resultado.innerHTML =  `Parâmetro ${numeros} não pode ser nulo ou indefinido`;
+        let numero = Number(ipt_media.value);
+
+        if (numero == null || numero == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numero} não pode ser nulo ou indefinido`;
         }
+
+        vetorNumerosMedia.push(numero);
 
         let soma = 0;
 
-        for (let i = 0; i < numeros.length; i++) {
-            soma += numeros[i];
+        for (let i = 0; i < vetorNumerosMedia.length; i++) {
+            soma += vetorNumerosMedia[i];
 
-            if (typeof numeros[i] != "number") {
-                div_resultado.innerHTML =  `Tipo inválido para o argumento ${numeros[i]}`;
+            if (typeof vetorNumerosMedia[i] != "number") {
+                div_resultado.innerHTML =  `Tipo inválido para o argumento ${vetorNumerosMedia[i]}`;
             }
         }
 
-        let media = soma / numeros.length;
+        let media = soma / vetorNumerosMedia.length;
 
         div_resultado.innerHTML =  media;
     }
 
-    let vetor = [10, 10, 10, 10, 10];
-    let vetor2 = [10, 8, 7, 10, 8.5];
-    let vetor3 = ["a", 8, 7, 10, 8.5];
-
-
-
+    let notas = [];
+    let pesos = [];
 
     function calcularMediaPonderada() {
-        let vetor = Number(ipt_notas.value)
-        let pesos = Number(ipt_pesos.value);
+        let nota = Number(ipt_notas.value);
+        let peso = Number(ipt_pesos.value);
 
-        if (vetor == null || vetor == undefined) {
+        if (nota == null || nota == undefined) {
             div_resultado.innerHTML =  "Parâmetro vetor não pode ser nulo ou indefinido";
         }
 
-        if (pesos == null || pesos == undefined) {
+        if (peso == null || peso == undefined) {
             div_resultado.innerHTML =  "Parâmetro pesos não pode ser nulo ou indefinido";
         }
 
-        if (vetor.length == undefined || pesos.length == undefined) {
+        if (notas.length == undefined || notas.length == undefined) {
             div_resultado.innerHTML =  "Tipo inválido para os argumentos";
         }
 
-        if (vetor.length !== pesos.length) {
+        if (peso.length !== pesos.length) {
             div_resultado.innerHTML =  "Os vetores devem ter o mesmo tamanho";
         }
 
         let soma = 0;
         let mediaPonderada = 0;
 
-        for (let i = 0; i < vetor.length; i++) {
-            if (typeof vetor[i] != "number") {
-                div_resultado.innerHTML =  `Tipo inválido para o argumento ${vetor[i]}`;
+        notas.push(nota);
+        pesos.push(peso);
+
+        for (let i = 0; i < notas.length; i++) {
+            if (typeof notas[i] != "number") {
+                div_resultado.innerHTML =  `Tipo inválido para o argumento ${notas[i]}`;
             }
 
             if (typeof pesos[i] != "number") {
@@ -273,7 +276,7 @@
             }
 
             soma += pesos[i];
-            mediaPonderada += vetor[i] * pesos[i];
+            mediaPonderada += notas[i] * pesos[i];
         }
 
         div_resultado.innerHTML =  mediaPonderada;
