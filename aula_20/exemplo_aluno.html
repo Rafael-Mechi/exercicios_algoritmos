@@ -70,6 +70,7 @@
             <input type="text" id="ipt_nota" placeholder="Nota">
         </div>
         <button onclick="cadastrar()">Cadastrar e exibir</button>
+        <button onclick="verAcimaDe6()">Ver alunos com notas acima de 6</button>
     </div>
 
     <div id="div_resultado" class="div_resultado"></div>
@@ -100,6 +101,25 @@
                         <p>Nome: ${alunos[i].nome}</p>
                         <p>Nota: ${alunos[i].nota}</p>
                     </div>`;
+            }
+        }
+
+        function verAcimaDe6(){
+            if(alunos.length < 1){
+                alert("Você não tem nenhum aluno");
+            }
+
+            div_resultado.innerHTML = "";
+
+            for(let i = 0; i < alunos.length; i++){
+                if(alunos[i].nota > 6){
+                    div_resultado.innerHTML += `
+                    <div class="card">
+                        <p>RA: ${alunos[i].ra}</p>
+                        <p>Nome: ${alunos[i].nome}</p>
+                        <p>Nota: ${alunos[i].nota}</p>
+                    </div>`;
+                }
             }
         }
     </script>
