@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Combo</title>
+</head>
+
+<body>
+
+    <h2>1.1 - Somar</h2>
+    <input type="text" id="ipt_numero1">
+    <input type="text" id="ipt_numero2">
+    <button onclick="somar()">Somar</button>
+
+    <br><br><br>
+
+    <h2>1.2 - Calcular Distância</h2>
+    <input type="text" id="ipt_x1">
+    <input type="text" id="ipt_y1">
+    <input type="text" id="ipt_x2">
+    <input type="text" id="ipt_y2">
+    <button onclick="calcularDistancia()">Calcular</button>
+
+    <br><br><br>
+
+    <div id="div_resultado"></div>
+
+    <h2>1.3 - Converter Tempo</h2>
+    <input type="text" id="ipt_segundos">
+    <button onclick="converterParaHoraMinutoSegundo()">Converter</button>
+
+    <br><br><br>
+
+    <h2>1.4 - É Primo</h2>
+    <input type="text" id="ipt_primo">
+    <button onclick="ePrimo()">Testar</button>
+
+    <br><br><br>
+
+    <h2>1.5 - Calcular Fatorial</h2>
+    <input type="text" id="ipt_fatorial">
+    <button onclick="calcularFatorial()">Calcular</button>
+
+    <br><br><br>
+
+    <h2>1.6 - Calcular Média</h2>
+    <input type="text" id="ipt_media">
+    <button onclick="calcularMedia()">Calcular</button>
+
+
+    <br><br><br>
+
+    <h2>1.7 - Média Ponderada</h2>
+    <input type="text" id="ipt_notas">
+    <input type="text" id="ipt_pesos">
+    <button onclick="calcularMediaPonderada()">Calcular</button>
+
+    
+
+
+
+</body>
+<script>
+    function somar() {
+        let numero1 = Number(ipt_numero1.value);
+        let numero2 = Number(ipt_numero2.value);
+
+        if (numero1 == null || numero1 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numero1} não pode ser nulo ou indefinido`;
+        }
+        else if (numero2 == null || numero2 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numero2} não pode ser nulo ou indefinido`;
+        }
+
+        else if (typeof numero1 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${numero1}`;
+        }
+
+        else if (typeof numero2 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${numero2}`;
+        }
+
+        let soma = numero1 + numero2;
+        div_resultado.innerHTML = `${numero1} + ${numero2} = ${soma}`;
+    }
+
+
+
+    function calcularDistancia() {
+        let x1 = Number(ipt_x1.value);
+        let y1 = Number(ipt_y1.value);
+        let x2 = Number(ipt_x2.value);
+        let y2 = Number(ipt_y2.value);
+
+
+        if (x1 == null || x1 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${x1} não pode ser nulo ou indefinido`;
+        }
+
+        else if (x2 == null || x2 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${x2} não pode ser nulo ou indefinido`;
+        }
+
+        else if (y1 == null || y1 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${y1} não pode ser nulo ou indefinido`;
+        }
+
+        else if (y2 == null || y2 == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${y2} não pode ser nulo ou indefinido`;
+        }
+        else if (typeof x1 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${x1}`;
+        }
+
+        else if (typeof x2 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${x2}`;
+        }
+
+        else if (typeof y1 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${y1}`;
+        }
+
+        else if (typeof y2 != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${y2}`;
+        }
+
+        calculo = (((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1))) ** 0.5;
+
+        div_resultado.innerHTML =  calculo;
+    }
+
+
+
+    function converterParaHoraMinutoSegundo() {
+        let segundos = Number(ipt_segundos.value);
+
+        let segundo = 0;
+        let minuto = 0;
+        let hora = 0;
+
+        for (let i = segundos; i > 0; i--) {
+            segundo++;
+
+            if (segundo == 60) {
+                segundo = 0;
+                minuto++;
+            }
+
+            if (minuto == 60) {
+                minuto = 0;
+                hora++;
+            }
+        }
+
+        div_resultado.innerHTML =  `${hora}:${minuto}:${segundo}`;
+    }
+
+    function ePrimo() {
+        let numero = Number(ipt_primo.value);
+
+        let cont = 0;
+
+        if (numero == "" || numero == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numero} não pode ser nulo ou indefinido`;
+        }
+
+        else if (typeof numero != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${numero}`;
+        }
+
+        else if (typeof numero != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${numero}`;
+        }
+        
+
+        for (let i = 0; i <= numero; i++) {
+            if (numero % i == 0) {
+                cont++;
+            }
+        }
+        if (cont == 2) {
+            div_resultado.innerHTML =  true;
+        }
+
+        else{
+            div_resultado.innerHTML =  false;
+        }
+        
+    }
+
+    function calcularFatorial() {
+        let numero = Number(ipt_fatorial.value);
+
+        if (numero == null || numero == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numero} não pode ser nulo ou indefinido`;
+        }
+
+        else if (typeof numero != "number") {
+            div_resultado.innerHTML =  `Tipo inválido para o argumento ${numero}`;
+        }
+
+        let soma = 1;
+
+        for (let i = numero; i >= 1; i--) {
+            soma *= i;
+        }
+
+        div_resultado.innerHTML =  soma;
+    }
+
+
+
+    function calcularMedia() {
+        let numeros = Number(ipt_media.value);
+
+        if (numeros == null || numeros == undefined) {
+            div_resultado.innerHTML =  `Parâmetro ${numeros} não pode ser nulo ou indefinido`;
+        }
+
+        let soma = 0;
+
+        for (let i = 0; i < numeros.length; i++) {
+            soma += numeros[i];
+
+            if (typeof numeros[i] != "number") {
+                div_resultado.innerHTML =  `Tipo inválido para o argumento ${numeros[i]}`;
+            }
+        }
+
+        let media = soma / numeros.length;
+
+        div_resultado.innerHTML =  media;
+    }
+
+    let vetor = [10, 10, 10, 10, 10];
+    let vetor2 = [10, 8, 7, 10, 8.5];
+    let vetor3 = ["a", 8, 7, 10, 8.5];
+
+
+
+
+    function calcularMediaPonderada() {
+        let vetor = Number(ipt_notas.value)
+        let pesos = Number(ipt_pesos.value);
+
+        if (vetor == null || vetor == undefined) {
+            div_resultado.innerHTML =  "Parâmetro vetor não pode ser nulo ou indefinido";
+        }
+
+        if (pesos == null || pesos == undefined) {
+            div_resultado.innerHTML =  "Parâmetro pesos não pode ser nulo ou indefinido";
+        }
+
+        if (vetor.length == undefined || pesos.length == undefined) {
+            div_resultado.innerHTML =  "Tipo inválido para os argumentos";
+        }
+
+        if (vetor.length !== pesos.length) {
+            div_resultado.innerHTML =  "Os vetores devem ter o mesmo tamanho";
+        }
+
+        let soma = 0;
+        let mediaPonderada = 0;
+
+        for (let i = 0; i < vetor.length; i++) {
+            if (typeof vetor[i] != "number") {
+                div_resultado.innerHTML =  `Tipo inválido para o argumento ${vetor[i]}`;
+            }
+
+            if (typeof pesos[i] != "number") {
+                div_resultado.innerHTML =  `Tipo inválido para o argumento ${pesos[i]}`;
+            }
+
+            soma += pesos[i];
+            mediaPonderada += vetor[i] * pesos[i];
+        }
+
+        div_resultado.innerHTML =  mediaPonderada;
+    }
+</script>
+
+</html>
