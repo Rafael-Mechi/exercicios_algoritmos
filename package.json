@@ -1,0 +1,21 @@
+{
+  "name": "exercicios_algoritmos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rafael-Mechi/exercicios_algoritmos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rafael-Mechi/exercicios_algoritmos/issues"
+  },
+  "homepage": "https://github.com/Rafael-Mechi/exercicios_algoritmos#readme"
+}

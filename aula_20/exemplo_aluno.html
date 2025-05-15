@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            border: none;
+            font-size: 20px;
+            padding: 30px;
+            border-radius: 20px;
+            background-color: rgb(112, 194, 112);
+            color: white;
+        }
+
+        button:hover {
+            cursor: pointer;
+            opacity: 70%;
+        }
+
+        input::placeholder {
+            color: white;
+        }
+
+        input {
+            border: none;
+            color: white;
+            background-color: rgb(92, 147, 192);
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 20px;
+            width: 300px;
+        }
+
+        .container_input {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 35vh;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .container_alunos {
+            display: flex;
+            background-color: rgb(165, 164, 164);
+            flex-direction: column;
+            flex-wrap: wrap;
+  
+            gap: 20px;
+            width: 100%;
+            height: 35vh;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .div_resultado{
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            grid-gap: 20px;
+            background-color: rgb(160, 160, 160);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container_input">
+
+        <div class="div_input">
+            <input type="text" placeholder="RA">
+            <input type="text" placeholder="Nome">
+            <input type="text" placeholder="Nota">
+        </div>
+        <button onclick="cadastrar()">Cadastrar e exibir</button>
+
+    </div>
+
+    <div id="div_resultado"></div>
+</body>
+<script>
+    let alunos = [];
+
+    function cadastrar() {
+        let mensagem = '';
+
+        let aluno = {
+            ra: ipt_ra.value,
+            nome: ipt_nome.value,
+            nota: Number(ipt_nota.value)
+        };
+
+        alunos.push(aluno);
+
+        for(let i = 0; i < alunos.length; i++){
+            mensagem += `<div class="div_resultado">
+                            <p>${alunos[i].ra}</p>
+                            <p>${alunos[i].nome}</p>
+                            <p>${alunos[i].nota}</p>
+                        </div>`;
+
+        }
+    }
+</script>
+
+</html>
