@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+</head>
+
+<body>
+    <button onclick="verTodasAsFichas()">Ver Fichas Pacientes</button>
+
+    <br>
+
+    <input type="text" id="ipt_codigo" placeholder="Digite o código">
+    <button onclick="buscarPorCodigo()">Buscar por código</button>
+
+    <div id="div_resposta"></div>
+
+    <!-- Importando o JS com os dados -->
+    <script src="dados.js"></script>
+</body>
+
+<script>
+
+    function chamarRelatorioPorPaciente(paciente) {
+    let relatorio = "";
+    relatorio += `-------------------------------------<br> Código de atendimento:
+                    ${paciente.codigoAtendimento}<br>
+                    Nome Completo: ${paciente.nome}
+                    ${paciente.sobrenome}<br> `;
+                    
+    relatorio += ` Lista de sintomas:<br>`;
+
+    for (let i = 0; i < paciente.sintomas.length; i++) {
+        relatorio += ` Sintoma: ${paciente.sintomas[i]}<br> `;
+    }
+    return relatorio;
+}
+
+function verTodasAsFichas() {
+    let relatorioFinal = "";
+    for (let i = 0; i < pacientes.length; i++) {
+        relatorioFinal += chamarRelatorioPorPaciente(pacientes[i]);
+    }
+    div_resposta.innerHTML = relatorioFinal;
+}
+
+    function buscarPorCodigo() {
+        let codigoDigitado = ipt_codigo.value;
+        let relatorioFinal = "O usuário não existe na lista";
+
+        for (let i = 0; i < pacientes.length; i++) {
+            if (pacientes[i].codigoAtendimento == codigoDigitado) {
+                relatorioFinal = + chamarRelatorioPorPaciente(pacientes[i])
+            }
+        }
+
+        div_resposta.innerHTML = relatorioFinal;
+    }
+</script>
+
+</html>

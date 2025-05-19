@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Buscar Filmes:</h2>
+
+  <span>Nome:</span>
+  <input type="text" id="ipt_nome">
+  <button onclick="pesquisarNome()">Pesquisar</button>
+
+  <span>Diretor:</span>
+  <input type="text" id="ipt_diretor">
+  <button onclick="pesquisarDiretor()">Pesquisar</button>
+
+  <span>Ano:</span>
+  <select id="ipt_ano_parametro">
+    <option value="maior_igual">&gt;=</option>
+    <option value="igual">==</option>
+    <option value="menor_igual">&lt;=</option>
+  </select>
+  <input type="number" id="ipt_ano">
+  <button onclick="pesquisarAno()">Pesquisar</button><br><br>
+
+  <span>Gênero:</span>
+  <input type="text" id="ipt_genero">
+  <button onclick="pesquisarGenero()">Pesquisar</button>
+
+  <span>Média:</span>
+  <select id="ipt_media_parametro">
+    <option value="maior_igual">&gt;=</option>
+    <option value="igual">==</option>
+    <option value="menor_igual">&lt;=</option>
+  </select>
+  <input type="text" id="ipt_media">
+  <button onclick="pesquisarMedia()">Pesquisar</button><br><br>
+
+  <button onclick="pesquisar()">Mostrar Todos</button>
+
+  <div id="div_resultado"></div>
+</body>
+
+</html>
+<script src="dados.js"></script>
+<script>
+  function chamarRelatorioPorFilme(filme) {
+    let relatorio = "";
+
+    let soma = 0;
+
+    for(let i = 0; i < filme.notas.length; i++){
+        soma += filme.notas[i];
+    }
+
+    let media = (soma / filme.notas.length).toFixed(2);
+    console.log(media);
+    
+    relatorio = `--------------------------------------------------------------------------------<br>
+                  Filme: ${filme.nome} | Diretor: ${filme.diretor} | Ano: ${filme.ano} | Média: ${media}<br>`;
+
+    return relatorio;
+                  
+  }
+
+  function pesquisarNome() {
+    let filmeDigitado = ipt_nome.value.toLowerCase();
+
+    let relatorioFinal = "";
+
+    for (let i = 0; i < filmes.length; i++) {
+      if (filmes[i].nome.toLowerCase().includes(filmeDigitado)) {
+        relatorioFinal += chamarRelatorioPorFilme(filmes[i])
+      }
+    }
+
+    div_resultado.innerHTML = relatorioFinal;
+  }
+
+  function pesquisarDiretor() {
+    let diretorDigitado = ipt_diretor.value.toLowerCase();
+
+    let relatorioFinal = "";
+
+    for (let i = 0; i < filmes.length; i++) {
+      if (filmes[i].diretor.toLowerCase().includes(diretorDigitado)) {
+        relatorioFinal += chamarRelatorioPorFilme(filmes[i])
+      }
+    }
+
+    div_resultado.innerHTML = relatorioFinal;
+  }
+
+  function pesquisarAno() {
+    let anoDigitado = ipt_ano.value.toLowerCase();
+    let escolhaAno = ipt_ano_parametro.value;
+
+    let relatorioFinal = "";
+
+
+
+    for (let i = 0; i < filmes.length; i++) {
+      if(escolhaAno == "maior_igual"){
+        if(anoDigitado <= filmes[i].ano){
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+      else if(escolhaAno == "menor_igual"){
+        if(anoDigitado >= filmes[i].ano){
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+      else if(escolhaAno == "igual"){
+        if(anoDigitado == filmes[i].ano){
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+      else{
+        alert("Inserção inválida");
+        return;
+      }
+    }
+
+    div_resultado.innerHTML = relatorioFinal;
+  }
+  
+  function pesquisarGenero(){
+    let generoDigitado = ipt_genero.value.toLowerCase();
+
+    let relatorioFinal = "";
+
+    for(let i = 0; i < filmes.generos.length; i++){
+      if(filmes[i].generos.toLowerCase().includes(generoDigitado)){
+        relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+      }
+      
+    }
+
+  }
+</script>
