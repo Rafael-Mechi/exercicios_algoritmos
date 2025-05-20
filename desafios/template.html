@@ -48,29 +48,39 @@
 </html>
 <script src="dados.js"></script>
 <script>
+
+  function calcularMediaFilme(filme) {
+    let soma = 0;
+
+    for (let i = 0; i < filme.notas.length; i++) {
+      soma += filme.notas[i];
+    }
+
+    let media = soma / filme.notas.length;
+
+    return media.toFixed(2);
+  }
+
   function chamarRelatorioPorFilme(filme) {
     let relatorio = "";
 
-    let soma = 0;
-
-    for(let i = 0; i < filme.notas.length; i++){
-        soma += filme.notas[i];
-    }
-
-    let media = (soma / filme.notas.length).toFixed(2);
-    console.log(media);
-    
+    let media = calcularMediaFilme(filme);
     relatorio = `--------------------------------------------------------------------------------<br>
                   Filme: ${filme.nome} | Diretor: ${filme.diretor} | Ano: ${filme.ano} | Média: ${media}<br>`;
 
     return relatorio;
-                  
+
   }
 
   function pesquisarNome() {
     let filmeDigitado = ipt_nome.value.toLowerCase();
 
     let relatorioFinal = "";
+
+    if(filmeDigitado == ""){
+      alert("Não há filmes sem nome");
+      return;
+    }
 
     for (let i = 0; i < filmes.length; i++) {
       if (filmes[i].nome.toLowerCase().includes(filmeDigitado)) {
@@ -101,25 +111,33 @@
 
     let relatorioFinal = "";
 
+    if(anoDigitado < 0){
+      alert("Não há filmes antes do ano zero");
+      return;
+    }
 
+    if(typeof anoDigitado != "number"){
+      alert("É pra ser números, não strings");
+      return;
+    }
 
     for (let i = 0; i < filmes.length; i++) {
-      if(escolhaAno == "maior_igual"){
-        if(anoDigitado <= filmes[i].ano){
+      if (escolhaAno == "maior_igual") {
+        if (anoDigitado <= filmes[i].ano) {
           relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
         }
       }
-      else if(escolhaAno == "menor_igual"){
-        if(anoDigitado >= filmes[i].ano){
+      else if (escolhaAno == "menor_igual") {
+        if (anoDigitado >= filmes[i].ano) {
           relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
         }
       }
-      else if(escolhaAno == "igual"){
-        if(anoDigitado == filmes[i].ano){
+      else if (escolhaAno == "igual") {
+        if (anoDigitado == filmes[i].ano) {
           relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
         }
       }
-      else{
+      else {
         alert("Inserção inválida");
         return;
       }
@@ -127,18 +145,75 @@
 
     div_resultado.innerHTML = relatorioFinal;
   }
-  
-  function pesquisarGenero(){
+
+  function pesquisarGenero() {
     let generoDigitado = ipt_genero.value.toLowerCase();
 
     let relatorioFinal = "";
 
-    for(let i = 0; i < filmes.generos.length; i++){
-      if(filmes[i].generos.toLowerCase().includes(generoDigitado)){
-        relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
-      }
-      
+    if(generoDigitado == ""){
+      alert("Não existe gênero sem nome");
+      return;
     }
 
+    for (let i = 0; i < filmes.length; i++) {
+      for (let j = 0; j < filmes[i].generos.length; j++) {
+        if (filmes[i].generos[j].toLowerCase().includes(generoDigitado)) {
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i])
+        }
+      }
+
+    }
+    div_resultado.innerHTML = relatorioFinal;
   }
+
+  function pesquisarMedia() {
+    let relatorioFinal = "";
+    let mediaDigitada = Number(ipt_media.value);
+    let escolhaMedia = ipt_media_parametro.value;
+
+    if (mediaDigitada < 0) {
+      alert("Você não pode buscar uma média menor do que zero");
+      return;
+    }
+    
+    if(mediaDigitada == ""){
+      alert("Não pode valores vazios");
+      return;
+    }
+
+    for (let i = 0; i < filmes.length; i++) {
+      let media = Number(calcularMediaFilme(filmes[i]));
+
+      if (escolhaMedia == "menor_igual") {
+        if (media <= mediaDigitada) {
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+
+      else if (escolhaMedia == "maior_igual") {
+        if (media >= mediaDigitada) {
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+      else if (escolhaMedia == "igual") {
+        if (mediaDigitada == media) {
+          relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+        }
+      }
+    }
+    div_resultado.innerHTML = relatorioFinal;
+  }
+
+  function pesquisar(){
+    let relatorioFinal = "";
+
+    for(let i = 0; i < filmes.length; i++){
+      relatorioFinal += chamarRelatorioPorFilme(filmes[i]);
+    }
+
+    div_resultado.innerHTML = relatorioFinal;
+  }
+  
+  
 </script>
