@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Musical</title>
+</head>
+
+<body>
+    <label for="ipt_titulo">Digite o título da música para adicionar</label>
+    <input type="text" id="ipt_titulo">
+
+    <label for="ipt_banda">Digite o nome da banda para adicionar</label>
+    <input type="text" id="ipt_banda">
+
+    <label for="ipt_duracao">Digite a duração da música em minutos para adicionar</label>
+    <input type="number" id="ipt_duracao">
+
+    <label for="ipt_ano">Digite o ano de lançamento</label>
+    <input type="number" id="ipt_ano">
+
+    <label for="ipt_avaliacao">Digite as avaliações separadas por vírgula</label>
+    <input type="text" placeholder="Ex: 10, 6, 9" id="ipt_avaliacao">
+
+    <label for="ipt_integrante">Digite os integrantes separados por vírgula</label>
+    <input type="text" placeholder="Ex: John Lennon, Paul Mccartney" id="ipt_integrante">
+    
+    <button onclick="adicionarMusica()">Adicionar música</button>
+
+    <br><br><br>
+</body>
+<script>
+    let musicas = [
+        {
+            "titulo": "",
+            "banda": "",
+            "duracao": "",
+            "anoLancamento": "",
+            "avaliacoes": [],
+            "integrantes": []
+        }
+
+    ]
+
+    function adicionarMusica() {
+        let titulo = ipt_titulo.value;
+        let banda = ipt_banda.value;
+        let duracao = ipt_duracao.value;
+        let anoLancamento = ipt_ano.value;
+        let avaliacao = ipt_avaliacao.value;
+        let integrantesDigitados = ipt_integrante.value;
+
+        if(titulo == "" || banda == "" || duracao == "" || anoLancamento == "" || avaliacao == "" || integrantesDigitados == ""){
+            alert("Preencha todos os campos primeiro");
+            return;            
+        }
+
+        const integrantes = integrantesDigitados.split(",");
+
+            musicas.push(titulo);
+            musicas.push(banda);
+            musicas.push(duracao);
+            musicas.push(anoLancamento);
+            musicas.push(avaliacao);
+            
+            for(let i = 0; i < integrantes.length; i++){
+                integrantes[i] = integrantes[i].trim();
+                musicas.push(integrantes[i]);
+            }
+
+            console.log(musicas[0].titulo);
+            console.log(musicas[0].integrantes);
+
+    }
+</script>
+
+</html>
