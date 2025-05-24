@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -25,23 +25,21 @@
 
     <label for="ipt_integrante">Digite os integrantes separados por vírgula</label>
     <input type="text" placeholder="Ex: John Lennon, Paul Mccartney" id="ipt_integrante">
-    
+
     <button onclick="adicionarMusica()">Adicionar música</button>
 
     <br><br><br>
+
+    <button onclick="listarMusicas()">Listar músicas</button>
+    <button onclick="removerMusica()">Remover música pelo nome</button>
+    <button onclick="atualizarAnoLancamento()">Atualizar ano da música pelo título</button>
+    <button onclick="mediaAvaliacoes()">Exibir média de avaliações de uma música pelo título</button>
+    <button onclick="buscarBandaPorIntegrante()">Buscar banda por integrante</button>
+
+    <div id="resultado"></div>
 </body>
 <script>
-    let musicas = [
-        {
-            "titulo": "",
-            "banda": "",
-            "duracao": "",
-            "anoLancamento": "",
-            "avaliacoes": [],
-            "integrantes": []
-        }
-
-    ]
+    let musicas = [];
 
     function adicionarMusica() {
         let titulo = ipt_titulo.value;
@@ -51,27 +49,138 @@
         let avaliacao = ipt_avaliacao.value;
         let integrantesDigitados = ipt_integrante.value;
 
-        if(titulo == "" || banda == "" || duracao == "" || anoLancamento == "" || avaliacao == "" || integrantesDigitados == ""){
+        if (titulo == "" || banda == "" || duracao == "" || anoLancamento == "" || avaliacao == "" || integrantesDigitados == "") {
             alert("Preencha todos os campos primeiro");
-            return;            
+            return;
         }
 
         const integrantes = integrantesDigitados.split(",");
+        const avaliacoes = avaliacao.split(",");
 
-            musicas.push(titulo);
-            musicas.push(banda);
-            musicas.push(duracao);
-            musicas.push(anoLancamento);
-            musicas.push(avaliacao);
-            
-            for(let i = 0; i < integrantes.length; i++){
-                integrantes[i] = integrantes[i].trim();
-                musicas.push(integrantes[i]);
+        for (let i = 0; i < integrantes.length; i++) {
+            integrantes[i] = integrantes[i].trim();
+        }
+
+        for (let i = 0; i < avaliacoes.length; i++) {
+            avaliacoes[i] = Number(avaliacoes[i].trim());
+        }
+
+        let musica = {
+            titulo: titulo,
+            banda: banda,
+            duracao: duracao,
+            anoLancamento: anoLancamento,
+            avaliacoes: avaliacoes,
+            integrantes: integrantes
+        };
+
+        musicas.push(musica)
+
+        console.log(musicas);
+
+
+        alert("Música adicionada com sucesso!");
+    }
+
+    function listarMusicas(){
+        let mensagem = "";
+
+        for(let i = 0; i < musicas.length; i++){
+            let musica = musicas[i];
+            mensagem += `
+                    ----------------------------------------<br>
+                        Música: ${musica.titulo} <br>
+                        Banda: ${musica.banda} <br>
+                        Duração: ${musica.duracao} minutos <br>
+                        Ano de lançamento: ${musica.anoLancamento} <br>
+                        Avaliações: ${musica.avaliacoes} <br>
+                        Integrantes: ${musica.integrantes} <br> <br>
+            `;
+        }
+
+        resultado.innerHTML = mensagem;
+    }
+
+    function removerMusica(){
+        let titulo = ipt_titulo.value;
+        let mensagem = "Música não encontrada";
+        
+        for(let i = 0; i < musicas.length; i++){
+            if(titulo == musicas[i].titulo){
+                mensagem = `A música ${musicas[i].titulo} foi deletada com sucesso!`;
+                musicas.splice(i, 1);
+                break;
             }
+        }
 
-            console.log(musicas[0].titulo);
-            console.log(musicas[0].integrantes);
+        resultado.innerHTML = mensagem;
+    }
 
+    function atualizarAnoLancamento(){
+        let anoDigitado = ipt_ano.value;
+        let titulo = ipt_titulo.value;
+
+        let mensagem = "Música não encontrada";
+
+        for(let i = 0; i < musicas.length; i++){
+            if(titulo == musicas[i].titulo){
+                mensagem = `Música ${titulo} teve seu ano alterado: ${musicas[i].anoLancamento} -> ${anoDigitado}`;
+                musicas[i].anoLancamento = anoDigitado;
+                break;
+            }
+        }
+
+        resultado.innerHTML = mensagem;
+    }
+
+    function mediaAvaliacoes(){
+        let titulo = ipt_titulo.value;
+        let soma = 0;
+        let tamanhoVetorAvaliacao = 0;
+
+        let musicaEncontrada = false;
+        let mensagem = "";
+
+        for(let i = 0; i < musicas.length; i++){
+            if(titulo == musicas[i].titulo){
+                musicaEncontrada = true;
+                mensagem = `Avaliações: ${musicas[i].avaliacoes}<br>`;
+
+                for(let j = 0; j < musicas[i].avaliacoes.length; j++){
+                    tamanhoVetorAvaliacao ++;
+                    soma += musicas[i].avaliacoes[j];
+                }
+                break;
+            }
+        }
+
+        let media = soma / tamanhoVetorAvaliacao;
+
+        if(!musicaEncontrada){
+            mensagem = "Música não encontrada";
+            resultado.innerHTML = mensagem;
+            return;
+        }
+
+        mensagem += `Média: ${media.toFixed(2)}`;
+
+        resultado.innerHTML = mensagem;
+
+    }
+
+    function buscarBandaPorIntegrante(){
+        let integranteDigitado = ipt_integrante.value;
+        let mensagem = "Este integrante não existe ou não pertence a nenhuma banda da lista"
+
+       for(let i = 0; i < musicas.length; i++){
+        for(let j = 0; j < musicas[i].integrantes.length; j++){
+            if(integranteDigitado == musicas[i].integrantes[j]){
+                mensagem = `O integrante ${integranteDigitado} é da banda ${musicas[i].banda}`
+            }
+        }
+       } 
+
+       resultado.innerHTML = mensagem;
     }
 </script>
 
