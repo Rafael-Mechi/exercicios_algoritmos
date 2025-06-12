@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            height: 70vh;
+            border: solid;
+            gap: 20px;
+        }
+
+        .card_pokemon {
+            display: flex;
+            flex-direction: column;
+            border: solid;
+            width: 30%;
+            height: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .card_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 75%;
+            border: solid green;
+        }
+
+        .card_img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .card_nome {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 20%;
+            border: solid;
+            font-size: 1.5rem;
+            text-transform: capitalize;
+        }
+
+        .sugestoes {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            height: 60vh;
+            border: solid;
+            overflow-y: auto;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .sugestao_item {
+            display: flex;
+            align-items: center;
+            border: solid;
+            padding: 8px;
+            gap: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .sugestao_item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sugestao_item img {
+            width: 50px;
+            height: 50px;
+            border: solid;
+        }
+
+        .sugestao_item p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        #ipt_pokemon {
+            padding: 10px;
+            font-size: 1rem;
+            width: 200px;
+            margin-right: 10px;
+            border: solid;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: solid;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card_pokemon">
+            <div class="card_img">
+                <img src="" id="img_pokemon">
+            </div>
+            <div class="card_nome">
+                <p id="nome_pokemon"></p>
+            </div>
+        </div>
+
+        <div class="sugestoes" id="sugestoes">
+            <div class="sugestao_item" onclick="buscarPokemon">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png" alt="Raichu">
+                <p>Raichu</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 20px;">
+        <input type="text" id="ipt_pokemon" placeholder="Digite o nome do Pokémon">
+        <button onclick="buscarPokemonPorNome()">Buscar Pokémon</button>
+    </div>
+</body>
+<script>
+    async function buscarPokemonPorNome() {
+        let pokemonDigitado = ipt_pokemon.value;
+
+        let pokemonConvertido = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonDigitado}`)
+            .then((resposta) => resposta.json())
+
+            .catch(buscarPokemonPorIncludes(pokemonDigitado));
+
+        console.log(pokemonConvertido.name);
+        nome_pokemon.innerHTML = pokemonConvertido.name;
+        img_pokemon.src = pokemonConvertido.sprites.front_default;
+    }
+
+    function buscarPokemonPorIncludes(pokemon){
+        console.log(pokemon);
+        
+    }
+</script>
+
+</html>
